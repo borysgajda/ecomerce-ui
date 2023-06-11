@@ -51,11 +51,12 @@ import swal from 'sweetalert';
 export default {
   data() {
     return {
+      baseURL: 'https://limitless-lake-55070.herokuapp.com/',
       category: null,
       id: null,
     };
   },
-  props: ['baseURL', 'categories'],
+  props: ['categories'],
   methods: {
     async editCategory() {
       delete this.category['products'];

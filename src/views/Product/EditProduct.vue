@@ -57,11 +57,12 @@ import swal from 'sweetalert';
 export default {
   data() {
     return {
+      baseURL: 'https://limitless-lake-55070.herokuapp.com/',
       product: null,
       id: null,
     };
   },
-  props: ['baseURL', 'categories', 'products'],
+  props: ['categories', 'products'],
   methods: {
     async editProduct() {
       console.log('product', this.product);
