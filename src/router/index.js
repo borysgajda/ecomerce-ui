@@ -1,14 +1,16 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import HomeView from '../views/HomeView.vue';
-import AddCategory from '../views/Category/AddCategory.vue';
-import Category from '../views/Category/Category.vue';
-import Admin from '../views/Admin.vue';
-import Product from '../views/Product/Product.vue';
-import AddProduct from '../views/Product/AddProduct.vue';
-import ListProducts from '../views/Category/ListProducts.vue';
+import HomeView from '@/views/HomeView.vue';
+import AddCategory from '@/views/Category/AddCategory.vue';
+import Category from '@/views/Category/Category.vue';
+import Admin from '@/views/Admin.vue';
+import Cart from '@/views/Cart.vue';
+import Product from '@/views/Product/Product.vue';
+import AddProduct from '@/views/Product/AddProduct.vue';
+import ListProducts from '@/views/Category/ListProducts.vue';
 import EditCategory from '@/views/Category/EditCategory.vue';
 import EditProduct from '@/views/Product/EditProduct.vue';
 import ShowDetails from '@/views/Product/ShowDetails.vue';
+import WishList from '@/views/Product/WishList.vue';
 import Signin from '@/views/Signin.vue';
 import Signup from '@/views/Signup.vue';
 
@@ -17,6 +19,11 @@ const routes = [
     path: '/',
     name: 'home',
     component: HomeView
+  },
+  {
+    path: '/wishList',
+    name: 'WishList',
+    component: WishList
   },
   {
     path: '/category/show/:id',
@@ -72,6 +79,11 @@ const routes = [
     path: '/signin',
     name: 'Signin',
     component: Signin
+  },
+  {
+    path: '/cart',
+    name: 'Cart',
+    component: Cart
   }
 ];
 

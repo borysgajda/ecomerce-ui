@@ -14,6 +14,20 @@
         <p>
           {{ product.description }}
         </p>
+        <div class="d-flex flex-row justify-content-between">
+          <div class="input-group col-md-3 col-4 p-0">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Quantity</span>
+            </div>
+            <input type="number" class="form-control" v-model="quantity" />
+          </div>
+
+          <div class="input-group col-md-3 col-4 p-0">
+            <button class="btn" type="button" id="add-to-cart-button" @click="addToCart">
+              Add to Cart
+            </button>
+          </div>
+        </div>
         <div class="features pt-3">
           <h5><strong>Features</strong></h5>
           <ul>
@@ -24,30 +38,109 @@
             <li>ut doloremque dolore corrupti, architecto iusto beatae.</li>
           </ul>
         </div>
+        <button id="wishlist-button" class="btn mr-3 p-1 py-0" @click="addToWishlist()">
+          {{ wishListString }}
+        </button>
       </div>
     </div>
   </div>
 </template>
 <script>
+import swal from 'sweetalert';
+import axios from 'axios';
 export default {
   data() {
     return {
+      baseURL: 'https://limitless-lake-55070.herokuapp.com/',
       product: {},
       category: {},
+      quantity: 1,
+      wishListString: 'Add to wishlist',
     };
   },
-  props: ['baseURL', 'products', 'categories'],
+  props: ['products', 'categories'],
+  methods: {
+    addToWishlist() {
+      if (!this.token) {
+        // user is not logged in
+        // show some error
+        swal({
+          text: 'please login to add item in wishlist',
+          icon: 'error',
+        });
+        return;
+      }
+      // add item to wishlist
+      axios
+        .post(`${this.baseURL}wishlist/add?token=${this.token}`, {
+          id: this.product.id,
+        })
+        .then((res) => {
+          if (res.status === 201) {
+            this.wishListString = 'Added to Wishlist';
+            swal({
+              text: 'Added to Wishlist',
+              icon: 'success',
+            });
+          }
+        })
+        .catch((err) => {
+          console.log('err', err);
+        });
+    },
+
+    // add to cart
+
+    addToCart() {
+      if (!this.token) {
+        // user is not logged in
+        // show some error
+        swal({
+          text: 'please login to add item in cart',
+          icon: 'error',
+        });
+        return;
+      }
+
+      // add to cart
+
+      axios
+        .post(`${this.baseURL}/cart/add?token=${this.token}`, {
+          productId: this.id,
+          quantity: this.quantity,
+        })
+        .then((res) => {
+          if (res.status == 201) {
+            swal({
+              text: 'Product added in cart',
+              icon: 'success',
+            });
+            this.$emit('fetchData');
+          }
+        })
+        .catch((err) => console.log('err', err));
+    },
+  },
   mounted() {
     this.id = this.$route.params.id;
     this.product = this.products.find((product) => product.id == this.id);
     this.category = this.categories.find(
       (category) => category.id == this.product.categoryId
     );
+    this.token = localStorage.getItem('token');
   },
 };
 </script>
 <style>
 .category {
   font-weight: 400;
+}
+
+#wishlist-button {
+  background-color: #b9b9b9;
+}
+
+#add-to-cart-button {
+  background-color: #febd69;
 }
 </style>

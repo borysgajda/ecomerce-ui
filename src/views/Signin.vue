@@ -3,7 +3,6 @@
   <div class="conatiner">
     <div class="row">
       <div class="col-12 justify-content-center d-flex flex-row pt-5">
-        <!-- <img id="logo" src="../assets/logos.png" /> -->
         <div id="signin" class="flext-item border">
           <h2 class="pt-4">Sign-In</h2>
           <form @submit="signin" class="form-group pt-4 pl-4 pr-4">
@@ -42,12 +41,14 @@ export default {
       };
       await axios
         .post(`${this.baseURL}user/signIn`, body)
-        .then(() => {
-          this.$router.replace('/');
+        .then((res) => {
+          localStorage.setItem('token', res.data.token);
           swal({
             text: 'Login successful',
             icon: 'success',
           });
+          this.$emit('fetchData');
+          this.$router.push({ name: 'Home' });
         })
         .catch((err) => console.log('err', err));
     },
