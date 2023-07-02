@@ -9,10 +9,10 @@
             >
           </h3>
           <p class="lead mb-0 bg-dark p-1 rounded">
-            Stonners to miejsce, gdzie pasjonaci kamieni naturalnych, kolekcjonerzy,
+            Stone Shop to miejsce, gdzie pasjonaci kamieni naturalnych, kolekcjonerzy,
             projektanci wnętrz i osoby poszukujące unikalnych prezentów znajdą szeroki
             wybór wysokiej jakości kamieni i produktów z nimi związanych. Fachowa obsługa
-            i bogate doświadczenie w dziedzinie kamieniarstwa sprawiają, że Stonners to
+            i bogate doświadczenie w dziedzinie kamieniarstwa sprawiają, że Stone Shop to
             idealne miejsce dla wszystkich, którzy cenią piękno i energię kamieni
             naturalnych.
           </p>
@@ -20,12 +20,10 @@
       </div>
       <hr />
     </div>
-
-    <!--    display categories-->
     <div class="container">
       <div class="row">
         <div class="col-12 text-center">
-          <h2 class="pt-3">Top Categories</h2>
+          <h2 class="pt-3">Najlepsze kategorie</h2>
         </div>
       </div>
       <div class="row">
@@ -38,17 +36,12 @@
         </div>
       </div>
     </div>
-
-    <!--    display top products-->
     <div class="container py-2">
       <div class="row">
         <div class="col-12 text-center">
-          <h2 class="pt-3">Top Products</h2>
+          <h2 class="pt-3">Najlepsze produkty</h2>
         </div>
       </div>
-
-      <!--      display products-->
-
       <div class="row">
         <div
           v-for="index in this.productSize"

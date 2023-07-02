@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row">
       <div class="col-12 text-center">
-        <h4>Add New Product</h4>
+        <h4>Dodaj nowy produkt</h4>
       </div>
     </div>
     <div class="row">
@@ -10,7 +10,7 @@
       <div class="col-6">
         <form>
           <div class="form-group">
-            <label>Category</label>
+            <label>Kategoria</label>
             <select class="form-control" v-model="categoryId" required>
               <option
                 v-for="category in categories"
@@ -22,11 +22,11 @@
             </select>
           </div>
           <div class="form-group">
-            <label>Name</label>
+            <label>Nawza</label>
             <input type="text" v-model="name" class="form-control" />
           </div>
           <div class="form-group">
-            <label>Description</label>
+            <label>Opis</label>
             <input type="text" v-model="description" class="form-control" />
           </div>
           <div class="form-group">
@@ -34,18 +34,16 @@
             <input type="text" v-model="imageURL" class="form-control" />
           </div>
           <div class="form-group">
-            <label>Price</label>
+            <label>Cena</label>
             <input type="number" v-model="price" class="form-control" />
           </div>
           <button type="button" class="btn btn-primary" @click="addProduct">
-            Add Product
+            Dodaj nowy produkt
           </button>
         </form>
       </div>
       <div class="col-3"></div>
     </div>
-
-    <!--        Form-->
   </div>
 </template>
 <script>
@@ -78,7 +76,7 @@ export default {
         .then(() => {
           this.$router.push({ name: 'AdminProduct' });
           swal({
-            text: 'Product added',
+            text: 'Produkt dodany',
             icon: 'success',
           });
         })

@@ -2,34 +2,32 @@
   <div class="container">
     <div class="row pt-5">
       <div class="col-md-1"></div>
-      <!--            display image-->
       <div class="col-md-4 col-12">
         <img :src="product.imageURL" class="img-fluid" />
       </div>
-      <!--            display product details-->
       <div class="col-md-6 col-12 pt-3 pt-md-0">
         <h4>{{ product.name }}</h4>
         <h6 class="catgory font-italic">{{ category.categoryName }}</h6>
-        <h6 class="font-weight-bold">$ {{ product.price }}</h6>
+        <h6 class="font-weight-bold">{{ product.price }} zł</h6>
         <p>
           {{ product.description }}
         </p>
         <div class="d-flex flex-row justify-content-between">
           <div class="input-group col-md-3 col-4 p-0">
             <div class="input-group-prepend">
-              <span class="input-group-text">Quantity</span>
+              <span class="input-group-text">Ilość</span>
             </div>
             <input type="number" class="form-control" v-model="quantity" />
           </div>
 
           <div class="input-group col-md-3 col-4 p-0">
             <button class="btn" type="button" id="add-to-cart-button" @click="addToCart">
-              Add to Cart
+              Dodaj do koszyka
             </button>
           </div>
         </div>
         <div class="features pt-3">
-          <h5><strong>Features</strong></h5>
+          <h5><strong>Cechy</strong></h5>
           <ul>
             <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
             <li>Officia quas, officiis eius magni error magnam voluptatem</li>
@@ -51,35 +49,32 @@ import axios from 'axios';
 export default {
   data() {
     return {
-      baseURL: 'https://limitless-lake-55070.herokuapp.com/',
+      baseURL: 'http://localhost:8080/',
       product: {},
       category: {},
       quantity: 1,
-      wishListString: 'Add to wishlist',
+      wishListString: 'Dodaj do listy życzeń',
     };
   },
   props: ['products', 'categories'],
   methods: {
     addToWishlist() {
       if (!this.token) {
-        // user is not logged in
-        // show some error
         swal({
-          text: 'please login to add item in wishlist',
+          text: 'Proszę zaloguj się aby dodać produkt do listy życzeń',
           icon: 'error',
         });
         return;
       }
-      // add item to wishlist
       axios
         .post(`${this.baseURL}wishlist/add?token=${this.token}`, {
           id: this.product.id,
         })
         .then((res) => {
           if (res.status === 201) {
-            this.wishListString = 'Added to Wishlist';
+            this.wishListString = 'Produkt dodany do listy życzeń';
             swal({
-              text: 'Added to Wishlist',
+              text: 'Produkt dodany do listy życzeń',
               icon: 'success',
             });
           }
@@ -89,20 +84,14 @@ export default {
         });
     },
 
-    // add to cart
-
     addToCart() {
       if (!this.token) {
-        // user is not logged in
-        // show some error
         swal({
-          text: 'please login to add item in cart',
+          text: 'Proszę zaloguj się aby dodać produkt do koszyka',
           icon: 'error',
         });
         return;
       }
-
-      // add to cart
 
       axios
         .post(`${this.baseURL}/cart/add?token=${this.token}`, {
@@ -112,7 +101,7 @@ export default {
         .then((res) => {
           if (res.status == 201) {
             swal({
-              text: 'Product added in cart',
+              text: 'Produkt dodany do koszyka',
               icon: 'success',
             });
             this.$emit('fetchData');

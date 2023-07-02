@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row">
       <div class="col-12 text-center">
-        <h4 class="pt-3">Edit Category</h4>
+        <h4 class="pt-3">Edytuj kategorie</h4>
       </div>
     </div>
     <div class="row">
@@ -10,7 +10,7 @@
       <div class="col-6">
         <form v-if="category">
           <div class="form-group">
-            <label>Category Name</label>
+            <label>Nazwa</label>
             <input
               type="text"
               class="form-control"
@@ -19,7 +19,7 @@
             />
           </div>
           <div class="form-group">
-            <label>Description</label>
+            <label>Opis</label>
             <input
               type="text"
               class="form-control"
@@ -37,7 +37,7 @@
             />
           </div>
           <button type="button" class="btn btn-primary" @click="editCategory">
-            Submit
+            Wyślij
           </button>
         </form>
       </div>
@@ -51,7 +51,7 @@ import swal from 'sweetalert';
 export default {
   data() {
     return {
-      baseURL: 'https://limitless-lake-55070.herokuapp.com/',
+      baseURL: 'http://localhost:8080/',
       category: null,
       id: null,
     };
@@ -67,7 +67,7 @@ export default {
           this.$emit('fetchData');
           this.$router.push({ name: 'Category' });
           swal({
-            text: 'category has been updated successfully',
+            text: 'kateogria została zaktualizowana',
             icon: 'success',
           });
         })

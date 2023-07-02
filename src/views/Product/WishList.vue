@@ -2,12 +2,9 @@
   <div class="container">
     <div class="row">
       <div class="col-12 text-center">
-        <h4 class="pt-3">Your WishList</h4>
+        <h4 class="pt-3">Twoja lista życzeń</h4>
       </div>
     </div>
-
-    <!-- diaplay products -->
-
     <div class="row">
       <div
         v-for="product of products"
@@ -26,7 +23,7 @@ export default {
   components: { ProductBox },
   data() {
     return {
-      baseURL: 'https://limitless-lake-55070.herokuapp.com/',
+      baseURL: 'http://localhost:8080/',
       token: null,
       products: null,
     };

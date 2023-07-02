@@ -1,12 +1,12 @@
 <template>
   <div class="div_class">
-    <h3>You will be redirected to payment page</h3>
+    <h3>Zostaniesz przekierowany na stronę płatności</h3>
     <div class="alert alert-primary">
-      While making payment use card number 4242 4242 4242 4242 and enter random date and
-      cvv (3 digit)
+      Dokonując płatności użyj numeru karty 4242 4242 4242 4242 i wpisz losową datę oraz
+      cvv (3 cyfry)
     </div>
 
-    <button class="btn btn-primary" @click="goToCheckout">Make Payment</button>
+    <button class="btn btn-primary" @click="goToCheckout">Płatność</button>
   </div>
 </template>
 
@@ -15,7 +15,7 @@ import axios from 'axios';
 export default {
   data() {
     return {
-      baseURL: 'https://limitless-lake-55070.herokuapp.com/',
+      baseURL: 'http://localhost:8080/',
       stripeAPIToken:
         'pk_test_51NIFMrBap5w1SKNo1hymdztW82gDaI7g0JR9FIXJbnBePvM7UMOFpAzNQJvsnF6EyiUhy1M61oniSFp2cavlm8iu00BEgcS6v9',
       stripe: '',

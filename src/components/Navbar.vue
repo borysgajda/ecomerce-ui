@@ -1,11 +1,8 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <!-- Navbar content -->
-    <!--    Logo-->
     <router-link class="navbar-brand" :to="{ name: 'home' }">
       <img id="logo" src="../assets/logos.png" />
     </router-link>
-    <!--    Burger Button-->
     <button
       class="navbar-toggler"
       type="button"
@@ -18,14 +15,13 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <!--      Search Bar-->
       <form class="form-inline ml-auto mr-auto">
         <div class="input-group">
           <input
             size="100"
             type="text"
             class="form-control"
-            placeholder="Search Items"
+            placeholder="Szukaj"
             aria-label="Username"
             aria-describedby="basic-addon1"
           />
@@ -47,7 +43,6 @@
           </div>
         </div>
       </form>
-      <!-- dropdown for browse -->
       <ul class="navbar-nav ml-auto">
         <li class="nav-item dropdown">
           <a
@@ -56,15 +51,17 @@
             id="navbarAccount"
             data-toggle="dropdown"
           >
-            Browse
+            Wyszukaj
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarAccount">
-            <router-link class="dropdown-item" :to="{ name: 'home' }">Home </router-link>
             <router-link class="dropdown-item" :to="{ name: 'home' }"
-              >Product
+              >Główna strona
             </router-link>
-            <router-link class="dropdown-item" :to="{ name: 'home' }"
-              >Category
+            <router-link class="dropdown-item" :to="{ name: 'Product' }"
+              >Produkty
+            </router-link>
+            <router-link class="dropdown-item" :to="{ name: 'CategoryNoAdmin' }"
+              >Kategorie
             </router-link>
           </div>
         </li>
@@ -75,19 +72,21 @@
             id="navbarAccount"
             data-toggle="dropdown"
           >
-            Accounts
+            Konto
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarAccount">
             <router-link v-if="token" class="dropdown-item" :to="{ name: 'WishList' }"
-              >Wishlist
+              >Lista życzeń
             </router-link>
             <router-link v-if="!token" class="dropdown-item" :to="{ name: 'Signup' }"
-              >Sign up
+              >Zarejestruj się
             </router-link>
-            <router-link v-if="!token" class="dropdown-item" :to="{ name: 'Signin' }"
-              >Sign in
+            <router-link v-if="!token" class="dropdown-item" :to="{ name: 'Signin' }">
+              Zaloguj się
             </router-link>
-            <a class="dropdown-item" v-if="token" href="#" @click="signout">Sign out </a>
+            <a class="dropdown-item" v-if="token" href="#" @click="signout"
+              >Wyloguj się
+            </a>
           </div>
         </li>
         <li class="nav-item">
@@ -99,7 +98,6 @@
           </div>
         </li>
       </ul>
-      <!-- dropdown for account -->
     </div>
   </nav>
 </template>
@@ -119,7 +117,7 @@ export default {
       localStorage.removeItem('token');
       this.token = null;
       swal({
-        text: 'Logged you out. Visit again',
+        text: 'Zostałeś wylogowany, do zobaczenia!',
         icon: 'success',
       });
       this.$emit('resetCartCount');

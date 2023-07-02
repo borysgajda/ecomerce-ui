@@ -3,12 +3,9 @@
   <div class="container">
     <div class="row">
       <div class="col-12 text-center">
-        <h3 class="pt-3">Shopping cart</h3>
+        <h3 class="pt-3">Twój koszyk</h3>
       </div>
     </div>
-
-    <!-- loop over the cart items and display -->
-
     <div
       v-for="cartItem in cartItems"
       :key="cartItem.id"
@@ -23,8 +20,6 @@
           style="object-fit: cover"
         />
       </div>
-
-      <!-- display product name, quantity -->
       <div class="col-md-5 px-3">
         <div class="card-block px-3">
           <h6 class="card-title">
@@ -36,30 +31,28 @@
           </h6>
 
           <p class="mb-0 font-weight-bold" id="item-price">
-            $ {{ cartItem.product.price }} per unit
+            {{ cartItem.product.price }} zł za sztukę
           </p>
-          <p class="mb-0" style="float: left">Quantity:{{ cartItem.quantity }}</p>
+          <p class="mb-0" style="float: left">Ilość: {{ cartItem.quantity }}</p>
         </div>
         <p class="mb-0" style="float: right">
-          Total:
+          Suma:
           <span class="font-weight-bold">
-            $ {{ cartItem.product.price * cartItem.quantity }}
+            {{ cartItem.product.price * cartItem.quantity }} zł
           </span>
         </p>
         <br />
         <a href="#" class="text-right" @click="deleteItem(cartItem.id)"
-          >Remove from cart
+          >Usuń z koszyka
         </a>
       </div>
       <div class="col-2"></div>
       <div class="col-12"><hr /></div>
     </div>
-
-    <!-- display the price -->
     <div class="total-cost pt-2 text-right">
-      <h5>Total : ${{ totalCost.toFixed(2) }}</h5>
+      <h5>Suma : {{ totalCost.toFixed(2) }} zł</h5>
       <button type="button" class="btn btn-primary confirm" @click="checkout">
-        Confirm order
+        Potwierdź zamówienie
       </button>
     </div>
   </div>
@@ -69,14 +62,13 @@ import axios from 'axios';
 export default {
   data() {
     return {
-      baseURL: 'https://limitless-lake-55070.herokuapp.com/',
+      baseURL: 'http://localhost:8080/',
       cartItems: [],
       token: null,
       totalCost: 0,
     };
   },
   methods: {
-    // fetch All items in cart
     listCartItems() {
       axios
         .get(`${this.baseURL}cart/?token=${this.token}`)

@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row">
       <div class="col-12 text-center">
-        <h4 class="pt-3">Edit Product</h4>
+        <h4 class="pt-3">Edytuj produkt</h4>
       </div>
     </div>
     <div class="row">
@@ -10,7 +10,7 @@
       <div class="col-6">
         <form v-if="product">
           <div class="form-group">
-            <label> Category</label>
+            <label> Kategoria</label>
             <select class="form-control" v-model="product.categoryId" required>
               <option
                 v-for="category of categories"
@@ -22,11 +22,11 @@
             </select>
           </div>
           <div class="form-group">
-            <label>Name</label>
+            <label>Nazwa</label>
             <input type="text" class="form-control" v-model="product.name" required />
           </div>
           <div class="form-group">
-            <label>Description</label>
+            <label>Opis</label>
             <input
               type="text"
               class="form-control"
@@ -39,11 +39,11 @@
             <input type="text" class="form-control" v-model="product.imageURL" required />
           </div>
           <div class="form-group">
-            <label>Price</label>
+            <label>Cena</label>
             <input type="number" class="form-control" v-model="product.price" required />
           </div>
           <button type="button" class="btn btn-primary" @click="editProduct">
-            Submit
+            Wyślij
           </button>
         </form>
       </div>
@@ -57,7 +57,7 @@ import swal from 'sweetalert';
 export default {
   data() {
     return {
-      baseURL: 'https://limitless-lake-55070.herokuapp.com/',
+      baseURL: 'http://localhost:8080/',
       product: null,
       id: null,
     };
@@ -72,7 +72,7 @@ export default {
           this.$emit('fetchData');
           this.$router.push({ name: 'AdminProduct' });
           swal({
-            text: 'product has been updated successfully',
+            text: 'produkt został zaktualizowany',
             icon: 'success',
           });
         })

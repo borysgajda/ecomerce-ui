@@ -9,15 +9,14 @@
     </div>
 
     <div class="card-body">
-      <router-link :to="{ name: 'ListProducts', params: { id: category.id } }">
-        <h5 class="card-title">{{ category.categoryName }}</h5></router-link
-      >
+      <h5 class="card-title">{{ category.categoryName }}</h5>
+
       <p class="card-text">{{ category.description }}</p>
       <router-link
         :to="{ name: 'EditCategory', params: { id: category.id } }"
         v-show="$route.name == 'Category'"
       >
-        <button class="btn btn-primary">Edit</button>
+        <button class="btn btn-primary">Edytuj</button>
       </router-link>
     </div>
   </div>

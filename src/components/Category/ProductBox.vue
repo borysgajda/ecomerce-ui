@@ -19,7 +19,7 @@
         :to="{ name: 'EditProduct', params: { id: product.id } }"
         v-show="$route.name == 'AdminProduct'"
       >
-        <button class="btn btn-primary">Edit</button>
+        <button class="btn btn-primary">Edytuj</button>
       </router-link>
     </div>
   </div>
