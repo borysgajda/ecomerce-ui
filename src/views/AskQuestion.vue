@@ -2,10 +2,12 @@
   <div class="container">
     <div class="row pt-5">
       <div class="col-md-6 col-12 pt-3 pt-md-0">
-        <header class="font-weigh-bold">Formularz Kontaktowy</header>
+        <header class="font-weight-bold mb-2" style="font-size: larger">
+          Formularz Kontaktowy
+        </header>
         <form @submit.prevent="sendEmail">
           <div class="form-group">
-            <label for="message">Imię:</label>
+            <label for="message">Imię</label>
             <input
               class="form-control"
               id="message"
@@ -15,7 +17,7 @@
             />
           </div>
           <div class="form-group">
-            <label for="email">Twój e-mail:</label>
+            <label for="email">Twój e-mail</label>
             <input
               type="email"
               class="form-control"
@@ -45,7 +47,7 @@
             />
           </div>
           <div class="form-group">
-            <label for="message">Twoja wiadomość:</label>
+            <label for="message">Twoja wiadomość</label>
             <textarea
               class="form-control"
               id="message"
@@ -54,11 +56,13 @@
               required
             ></textarea>
           </div>
-          <button type="submit" class="btn btn-primary">Wyślij wiadomość</button>
+          <button type="submit" class="btn btn-secondary">Wyślij wiadomość</button>
         </form>
       </div>
       <div class="col-md-6 col-12 pt-3 pt-md-0 right-column">
-        <header class="font-weigh-bold">Formularz Kontaktowy</header>
+        <header class="font-weight-bold mb-2" style="font-size: larger">
+          Nasze sklepy
+        </header>
         <div class="mt-3 font-italic">
           Jeśli chcesz dowiedzieć się więcej o towarach, złożonym zamówieniu, reklamacji,
           zwrocie lub masz inne pytania dotyczące naszej oferty skontaktuj się z wybranym

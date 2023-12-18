@@ -1,54 +1,20 @@
 <template>
-  <div id="home">
-    <div id="background-div" class="page-holder bg-cover">
-      <div class="container py-5">
-        <header class="text-left text-white py-5">
-          <h3 class="mb-4 rounded" id="heading">
-            <a href="#start-shopping" class="bg-white px-2 py-2 rounded">
-              Przeglądaj produkty</a
-            >
-          </h3>
-          <p class="lead mb-0 bg-dark p-1 rounded">
-            Stone Shop to miejsce, gdzie pasjonaci kamieni naturalnych, kolekcjonerzy,
-            projektanci wnętrz i osoby poszukujące unikalnych prezentów znajdą szeroki
-            wybór wysokiej jakości kamieni i produktów z nimi związanych. Fachowa obsługa
-            i bogate doświadczenie w dziedzinie kamieniarstwa sprawiają, że Stone Shop to
-            idealne miejsce dla wszystkich, którzy cenią piękno i energię kamieni
-            naturalnych.
-          </p>
+  <div class="container">
+    <div class="row pt-5">
+      <div class="col-md-6 col-12 pt-3 pt-md-0 right-column">
+        <header class="font-weight-bold mb-2" style="font-size: larger">
+          DANE FIRMY
         </header>
-      </div>
-      <hr />
-    </div>
-    <div class="container">
-      <div class="row">
-        <div class="col-12 text-center">
-          <h2 class="pt-3">Najlepsze kategorie</h2>
-        </div>
-      </div>
-      <div class="row">
-        <div
-          v-for="index in this.categorySize"
-          :key="index"
-          class="col-md-6 col-xl-4 col-12 pt-3 justify-content-around d-flex"
-        >
-          <CategoryBox :category="categories[index - 1]" />
-        </div>
-      </div>
-    </div>
-    <div class="container py-2">
-      <div class="row">
-        <div class="col-12 text-center">
-          <h2 class="pt-3">Najlepsze produkty</h2>
-        </div>
-      </div>
-      <div class="row">
-        <div
-          v-for="index in this.productSize"
-          :key="index"
-          class="col-md-6 col-xl-4 col-12 pt-3 justify-content-around d-flex"
-        >
-          <ProductBox :product="products[index - 1]" />
+        <div class="mt-3 font-italic">
+          <span>The Stone Shop Sp. z o.o.</span>
+          <span>ul. Krótka 14, 35-103 Rzeszów</span>
+          <span>NIP: 123-45-67-899</span>
+          <span>REGON: 123456789</span>
+          <span>KRS: 1122334455 Sąd Rejonowy w Rzeszowie, VIII Wydział Gospodarczy</span>
+          <span>Kapitał Zakładowy: 1.500.000 zł (opłacony w całości)</span>
+          <span>Nr konta: 11 2222 3333 4444 5555 6666 7777</span>
+          <span>IBAN: PL11 2222 3333 4444 5555 6666 777</span>
+          <span>BIC: PPAB PLPK</span>
         </div>
       </div>
     </div>
@@ -56,36 +22,41 @@
 </template>
 
 <script>
-import CategoryBox from '../components/Category/CategoryBox';
-import ProductBox from '../components/Category/ProductBox.vue';
 export default {
-  // eslint-disable-next-line vue/multi-word-component-names
-  name: 'Home',
-  components: { ProductBox, CategoryBox },
-  props: ['categories', 'products'],
   data() {
     return {
-      categorySize: 0,
-      productSize: 0,
+      baseURL: 'http://localhost:8080/',
     };
   },
-  mounted() {
-    this.categorySize = Math.min(6, this.categories.length);
-    this.productSize = Math.min(8, this.products.length);
-  },
+  props: ['products', 'categories'],
+  methods: {},
 };
 </script>
-<style>
-.page-holder {
-  min-height: 100vh;
+
+<style scoped>
+.font-italic {
+  display: flex;
+  flex-direction: column;
 }
-.bg-cover {
-  background-size: cover !important;
-}
-#background-div {
-  background: url('../assets/Stonners.png');
-}
-#heading {
+
+.category {
   font-weight: 400;
+}
+
+#wishlist-button {
+  background-color: #b9b9b9;
+}
+
+#add-to-cart-button {
+  background-color: #febd69;
+}
+
+.custom-link {
+  color: inherit !important;
+  text-decoration: none;
+}
+
+.right-column {
+  border-left: 1px solid grey;
 }
 </style>

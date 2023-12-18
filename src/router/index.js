@@ -19,7 +19,6 @@ import Checkout from '@/views/Checkout/Checkout.vue';
 import AskQuestion from '@/views/AskQuestion.vue';
 import About from '@/views/About.vue';
 import CompanyData from '@/views/CompanyData.vue';
-import Instructions from '@/views/Instructions.vue';
 import Carier from '@/views/Carier.vue';
 import Statue from '@/views/Statue.vue';
 import Delivery from '@/views/Delivery.vue';
@@ -136,11 +135,6 @@ const routes = [
     path: '/companyData',
     name: 'CompanyData',
     component: CompanyData
-  },
-  {
-    path: '/instructions',
-    name: 'Instructions',
-    component: Instructions
   },
   {
     path: '/carier',

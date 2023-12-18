@@ -47,11 +47,6 @@
               </router-link>
             </li>
             <li>
-              <router-link :to="{ name: 'Instructions' }" class="custom-link">
-                <a class="font-weight-light"> Instrukcje </a>
-              </router-link>
-            </li>
-            <li>
               <router-link :to="{ name: 'Carier' }" class="custom-link">
                 <a class="font-weight-light"> Kariera </a>
               </router-link>
