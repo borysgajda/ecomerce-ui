@@ -29,7 +29,7 @@
               </a>
             </li>
             <li>
-              <a class="font-weight-light"> (Pon - Pt) 8 - 17 </a>
+              <a class="font-weight-light"> (Pon - Pt) 8:00 - 17:00 </a>
             </li>
           </ul>
         </div>

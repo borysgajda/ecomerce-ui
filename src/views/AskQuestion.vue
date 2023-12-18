@@ -1,91 +1,166 @@
 <template>
-  <div id="home">
-    <div id="background-div" class="page-holder bg-cover">
-      <div class="container py-5">
-        <header class="text-left text-white py-5">
-          <h3 class="mb-4 rounded" id="heading">
-            <a href="#start-shopping" class="bg-white px-2 py-2 rounded">
-              Przeglądaj produkty</a
-            >
-          </h3>
-          <p class="lead mb-0 bg-dark p-1 rounded">
-            Stone Shop to miejsce, gdzie pasjonaci kamieni naturalnych, kolekcjonerzy,
-            projektanci wnętrz i osoby poszukujące unikalnych prezentów znajdą szeroki
-            wybór wysokiej jakości kamieni i produktów z nimi związanych. Fachowa obsługa
-            i bogate doświadczenie w dziedzinie kamieniarstwa sprawiają, że Stone Shop to
-            idealne miejsce dla wszystkich, którzy cenią piękno i energię kamieni
-            naturalnych.
-          </p>
-        </header>
+  <div class="container">
+    <div class="row pt-5">
+      <div class="col-md-6 col-12 pt-3 pt-md-0">
+        <header class="font-weigh-bold">Formularz Kontaktowy</header>
+        <form @submit.prevent="sendEmail">
+          <div class="form-group">
+            <label for="message">Imię:</label>
+            <input
+              class="form-control"
+              id="message"
+              rows="4"
+              v-model="emailName"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="email">Twój e-mail:</label>
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              v-model="senderEmail"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="message">Kod pocztowy</label>
+            <input
+              class="form-control"
+              id="message"
+              rows="4"
+              v-model="emailCode"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="message">Telefon</label>
+            <input
+              class="form-control"
+              id="message"
+              rows="4"
+              v-model="emailPhone"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="message">Twoja wiadomość:</label>
+            <textarea
+              class="form-control"
+              id="message"
+              rows="4"
+              v-model="emailMessage"
+              required
+            ></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Wyślij wiadomość</button>
+        </form>
       </div>
-      <hr />
-    </div>
-    <div class="container">
-      <div class="row">
-        <div class="col-12 text-center">
-          <h2 class="pt-3">Najlepsze kategorie</h2>
+      <div class="col-md-6 col-12 pt-3 pt-md-0 right-column">
+        <header class="font-weigh-bold">Formularz Kontaktowy</header>
+        <div class="mt-3 font-italic">
+          Jeśli chcesz dowiedzieć się więcej o towarach, złożonym zamówieniu, reklamacji,
+          zwrocie lub masz inne pytania dotyczące naszej oferty skontaktuj się z wybranym
+          sklepem.
         </div>
-      </div>
-      <div class="row">
-        <div
-          v-for="index in this.categorySize"
-          :key="index"
-          class="col-md-6 col-xl-4 col-12 pt-3 justify-content-around d-flex"
-        >
-          <CategoryBox :category="categories[index - 1]" />
+        <div class="mt-3">
+          <router-link :to="{ name: 'home' }">
+            <img id="logo" class="footer-brand" src="../assets/logos.png" />
+          </router-link>
         </div>
-      </div>
-    </div>
-    <div class="container py-2">
-      <div class="row">
-        <div class="col-12 text-center">
-          <h2 class="pt-3">Najlepsze produkty</h2>
-        </div>
-      </div>
-      <div class="row">
-        <div
-          v-for="index in this.productSize"
-          :key="index"
-          class="col-md-6 col-xl-4 col-12 pt-3 justify-content-around d-flex"
-        >
-          <ProductBox :product="products[index - 1]" />
+
+        <div>
+          <ul style="list-style-type: none" class="pl-0 mt-3">
+            <li>
+              <a class="font-weight-light">
+                <i class="bi bi-geo-alt"></i>
+              </a>
+              <a class="font-weight-light"> Ul. Krótka 14 </a>
+              <a class="font-weight-light"> 35-103 Rzeszów </a>
+            </li>
+            <li>
+              <a class="font-weight-light">
+                <i class="bi bi-telephone"></i> 123-456-789
+              </a>
+            </li>
+            <li>
+              <a class="font-weight-light"> (Pon - Pt) 8:00 - 17:00 </a>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
   </div>
 </template>
-
 <script>
-import CategoryBox from '../components/Category/CategoryBox';
-import ProductBox from '../components/Category/ProductBox.vue';
+import swal from 'sweetalert';
+import axios from 'axios';
 export default {
-  // eslint-disable-next-line vue/multi-word-component-names
-  name: 'Home',
-  components: { ProductBox, CategoryBox },
-  props: ['categories', 'products'],
   data() {
     return {
-      categorySize: 0,
-      productSize: 0,
+      baseURL: 'http://localhost:8080/',
+      product: {},
+      category: {},
+      quantity: 1,
+      wishListString: 'Dodaj do listy życzeń',
+      senderEmail: '',
+      emailMessage: '',
+      emailName: '',
+      emailCode: '',
+      emailPhone: '',
     };
   },
-  mounted() {
-    this.categorySize = Math.min(6, this.categories.length);
-    this.productSize = Math.min(8, this.products.length);
+  props: ['products', 'categories'],
+  methods: {
+    sendEmail() {
+      //kod do wysyłania e-maila
+      const emailData = {
+        senderEmail: this.senderEmail,
+        emailMessage: this.emailMessage,
+        emailName: this.emailName,
+        emailCode: this.emailCode,
+        emailPhone: this.emailPhone,
+      };
+
+      axios
+        .post(`${this.baseURL}/send-email`, emailData)
+        .then((res) => {
+          if (res.status === 200) {
+            swal({
+              text: 'Wiadomość e-mail została wysłana.',
+              icon: 'success',
+            });
+          }
+        })
+        .catch((err) => {
+          console.error('Błąd podczas wysyłania e-maila:', err);
+          swal({
+            text: 'Wystąpił błąd podczas wysyłania e-maila.',
+            icon: 'error',
+          });
+        });
+    },
   },
 };
 </script>
 <style>
-.page-holder {
-  min-height: 100vh;
-}
-.bg-cover {
-  background-size: cover !important;
-}
-#background-div {
-  background: url('../assets/Stonners.png');
-}
-#heading {
+.category {
   font-weight: 400;
+}
+
+#wishlist-button {
+  background-color: #b9b9b9;
+}
+
+#add-to-cart-button {
+  background-color: #febd69;
+}
+.custom-link {
+  color: inherit !important;
+  text-decoration: none;
+}
+.right-column {
+  border-left: 1px solid grey;
 }
 </style>
