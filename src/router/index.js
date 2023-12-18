@@ -16,6 +16,15 @@ import Signup from '@/views/Signup.vue';
 import Success from '@/views/Payment/Success.vue';
 import Failed from '@/views/Payment/Failed.vue';
 import Checkout from '@/views/Checkout/Checkout.vue';
+import AskQuestion from '@/views/AskQuestion.vue';
+import About from '@/views/About.vue';
+import CompanyData from '@/views/CompanyData.vue';
+import Instructions from '@/views/Instructions.vue';
+import Carier from '@/views/Carier.vue';
+import Statue from '@/views/Statue.vue';
+import Delivery from '@/views/Delivery.vue';
+import Payment from '@/views/Payment.vue';
+import Privacy from '@/views/Privacy.vue';
 
 const routes = [
   {
@@ -112,6 +121,51 @@ const routes = [
     path: '/checkout',
     name: 'Checkout',
     component: Checkout
+  },
+  {
+    path: '/ask',
+    name: 'Ask',
+    component: AskQuestion
+  },
+  {
+    path: '/about',
+    name: 'About',
+    component: About
+  },
+  {
+    path: '/companyData',
+    name: 'CompanyData',
+    component: CompanyData
+  },
+  {
+    path: '/instructions',
+    name: 'Instructions',
+    component: Instructions
+  },
+  {
+    path: '/carier',
+    name: 'Carier',
+    component: Carier
+  },
+  {
+    path: '/statue',
+    name: 'Statue',
+    component: Statue
+  },
+  {
+    path: '/delivery',
+    name: 'Delivery',
+    component: Delivery
+  },
+  {
+    path: '/payment',
+    name: 'Payment',
+    component: Payment
+  },
+  {
+    path: '/privacy',
+    name: 'Privacy',
+    component: Privacy
   }
 ];
 
