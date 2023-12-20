@@ -1,5 +1,9 @@
 <template>
-  <Navbar :cartCount="cartCount" @resetCartCount="resetCartCount" />
+  <Navbar
+    :cartCount="cartCount"
+    :categories="categories"
+    @resetCartCount="resetCartCount"
+  />
   <router-view
     v-if="categories && products"
     style="min-height: 60vh"
