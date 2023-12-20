@@ -8,7 +8,7 @@
               Przeglądaj produkty</a
             >
           </h3>
-          <p class="lead mb-0 bg-dark p-1 rounded">
+          <p class="lead mb-0 title-text p-1 rounded">
             Stone Shop to miejsce, gdzie pasjonaci kamieni naturalnych, kolekcjonerzy,
             projektanci wnętrz i osoby poszukujące unikalnych prezentów znajdą szeroki
             wybór wysokiej jakości kamieni i produktów z nimi związanych. Fachowa obsługa
@@ -87,5 +87,9 @@ export default {
 }
 #heading {
   font-weight: 400;
+}
+.title-text {
+  background-color: #f5f5f5;
+  color: black;
 }
 </style>

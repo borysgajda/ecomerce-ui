@@ -105,7 +105,7 @@
 <style>
 footer {
   margin-top: 100px;
-  background-color: #232f3e;
+  background-color: #111111;
   font-size: 16px;
 }
 a {
