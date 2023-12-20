@@ -1,122 +1,113 @@
 <template>
-  <div class="nav-wrapper">
-    <div>
+  <div>
+    <nav class="navbar-wrapper navbar navbar-expand-lg navbar-dark">
       <router-link class="navbar-brand" :to="{ name: 'home' }">
         <img id="logo" src="../assets/logos.png" />
       </router-link>
-    </div>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div class="nav-container">
-        <div>
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <form class="form-inline ml-auto mr-auto">
-              <div class="input-group">
-                <input
-                  size="100"
-                  type="text"
-                  class="form-control"
-                  placeholder="Szukaj"
-                  aria-label="Username"
-                  aria-describedby="basic-addon1"
-                />
-                <div class="input-group-prepend">
-                  <span class="input-group-text" id="search-button-navbar">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      fill="currentColor"
-                      class="bi bi-search"
-                      viewBox="0 0 16 16"
-                    >
-                      <path
-                        d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
-                      />
-                    </svg>
-                  </span>
-                </div>
-              </div>
-            </form>
-            <ul class="navbar-nav ml-auto">
-              <li class="nav-item dropdown">
-                <a
-                  class="nav-link nav-links dropdown-toggle"
-                  href="#"
-                  id="navbarAccount"
-                  data-toggle="dropdown"
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <form class="form-inline ml-auto mr-auto">
+          <div class="input-group">
+            <input
+              size="100"
+              type="text"
+              class="form-control"
+              placeholder="Szukaj"
+              aria-label="Username"
+              aria-describedby="basic-addon1"
+            />
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="search-button-navbar">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-search"
+                  viewBox="0 0 16 16"
                 >
-                  Wyszukaj
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarAccount">
-                  <router-link class="dropdown-item" :to="{ name: 'home' }"
-                    >Główna strona
-                  </router-link>
-                  <router-link class="dropdown-item" :to="{ name: 'Product' }"
-                    >Produkty
-                  </router-link>
-                  <router-link class="dropdown-item" :to="{ name: 'CategoryNoAdmin' }"
-                    >Kategorie
-                  </router-link>
-                </div>
-              </li>
-              <li class="nav-item dropdown">
-                <a
-                  class="nav-link nav-links dropdown-toggle text-light mr-4"
-                  href="#"
-                  id="navbarAccount"
-                  data-toggle="dropdown"
-                >
-                  Konto
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarAccount">
-                  <router-link
-                    v-if="token"
-                    class="dropdown-item"
-                    :to="{ name: 'WishList' }"
-                    >Lista życzeń
-                  </router-link>
-                  <router-link
-                    v-if="!token"
-                    class="dropdown-item"
-                    :to="{ name: 'Signup' }"
-                    >Zarejestruj się
-                  </router-link>
-                  <router-link
-                    v-if="!token"
-                    class="dropdown-item"
-                    :to="{ name: 'Signin' }"
-                  >
-                    Zaloguj się
-                  </router-link>
-                  <a class="dropdown-item" v-if="token" href="#" @click="signout"
-                    >Wyloguj się
-                  </a>
-                </div>
-              </li>
-              <li class="nav-item">
-                <div id="cart" style="position: relative" class="mr-3">
-                  <router-link class="text-light" :to="{ name: 'Cart' }">
-                    <span id="nav-cart-count">{{ cartCount }}</span>
-                    <i class="fa fa-shopping-cart nav-links" style="font-size: 36px"></i>
-                  </router-link>
-                </div>
-              </li>
-            </ul>
+                  <path
+                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
+                  />
+                </svg>
+              </span>
+            </div>
           </div>
-        </div>
+        </form>
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link text-light dropdown-toggle"
+              href="#"
+              id="navbarAccount"
+              data-toggle="dropdown"
+            >
+              Wyszukaj
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarAccount">
+              <router-link class="dropdown-item" :to="{ name: 'home' }"
+                >Główna strona
+              </router-link>
+              <router-link class="dropdown-item" :to="{ name: 'Product' }"
+                >Produkty
+              </router-link>
+              <router-link class="dropdown-item" :to="{ name: 'CategoryNoAdmin' }"
+                >Kategorie
+              </router-link>
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link mr-4 dropdown-toggle text-light"
+              href="#"
+              id="navbarAccount"
+              data-toggle="dropdown"
+            >
+              Konto
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarAccount">
+              <router-link v-if="token" class="dropdown-item" :to="{ name: 'WishList' }"
+                >Lista życzeń
+              </router-link>
+              <router-link v-if="!token" class="dropdown-item" :to="{ name: 'Signup' }"
+                >Zarejestruj się
+              </router-link>
+              <router-link v-if="!token" class="dropdown-item" :to="{ name: 'Signin' }">
+                Zaloguj się
+              </router-link>
+              <a class="dropdown-item" v-if="token" href="#" @click="signout"
+                >Wyloguj się
+              </a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <div id="cart" style="position: relative" class="mr-3">
+              <router-link class="text-light" :to="{ name: 'Cart' }">
+                <span id="nav-cart-count">{{ cartCount }}</span>
+                <i class="fa fa-shopping-cart" style="font-size: 36px"></i>
+              </router-link>
+            </div>
+          </li>
+        </ul>
       </div>
     </nav>
+    <div class="categories-wrapper">
+      <ul class="categories-list">
+        <li v-for="(category, index) in categories" :key="index" class="list-group-item">
+          {{ category.categoryName }}
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 <script>
@@ -124,7 +115,7 @@ import swal from 'sweetalert';
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
   name: 'Navbar',
-  props: ['cartCount'],
+  props: ['cartCount', 'categories'],
   data() {
     return {
       token: null,
@@ -144,29 +135,25 @@ export default {
   },
   mounted() {
     this.token = localStorage.getItem('token');
+    console.log(this.categories);
   },
 };
 </script>
 <style scoped>
-.navbar {
-  background-color: #fff !important;
-}
 #logo {
   width: 150px;
   margin-left: 20px;
   margin-right: 20px;
 }
 .nav-link {
-  color: green;
+  color: rgba(255, 255, 255);
 }
-
 #search-button-navbar {
   background-color: #febd69;
   border-color: #febd69;
   border-top-right-radius: 2px;
   border-bottom-right-radius: 2px;
 }
-
 #nav-cart-count {
   background-color: red;
   color: white;
@@ -175,23 +162,38 @@ export default {
   width: 15px;
   font-size: 15px;
   align-items: center;
-
   display: flex;
   justify-content: center;
-
   position: absolute;
   margin-left: 10px;
 }
-.nav-container {
-  width: 100%;
+.navbar-wrapper {
+  background-color: #111111;
+}
+.categories-wrapper {
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #111111;
+  padding-bottom: 5px;
 }
-.nav-wrapper {
-  background-color: #f5f5f5 !important;
-  height: 20vh;
+
+.categories-list {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
 }
-.nav-links {
-  color: black !important;
+
+.list-group-item {
+  display: inline-block;
+  background-color: #111111 !important;
+  color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+.form-control {
+  margin-left: 170px;
 }
 </style>
