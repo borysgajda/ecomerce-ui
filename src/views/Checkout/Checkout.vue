@@ -6,7 +6,9 @@
       cvv (3 cyfry)
     </div>
 
-    <button class="btn btn-primary" @click="goToCheckout">Płatność</button>
+    <button class="btn btn-seconrady border-radius" @click="goToCheckout">
+      Płatność
+    </button>
   </div>
 </template>
 
@@ -78,5 +80,8 @@ export default {
 .checkout_button {
   background-color: #5d3dec;
   margin: 10px;
+}
+.border-radius {
+  border-radius: 20px;
 }
 </style>

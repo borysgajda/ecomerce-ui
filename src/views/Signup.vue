@@ -31,19 +31,43 @@
             </div>
             <div class="form-group">
               <label for="Password">Hasło</label>
-              <input type="password" v-model="password" class="form-control" required />
+              <div class="input-group">
+                <input
+                  :type="passwordVisibility ? 'text' : 'password'"
+                  v-model="password"
+                  class="form-control"
+                  required
+                />
+                <div class="input-group-append">
+                  <span
+                    class="input-group-text"
+                    @click="togglePasswordVisibility('password')"
+                  >
+                    <i :class="passwordVisibility ? 'fa fa-eye-slash' : 'fa fa-eye'"></i>
+                  </span>
+                </div>
+              </div>
             </div>
             <div class="form-group">
-              <label for="Password">Potwierdź hasło</label>
-              <input
-                type="password"
-                v-model="confirmPassword"
-                class="form-control"
-                required
-              />
+              <div class="input-group">
+                <input
+                  :type="passwordVisibility ? 'text' : 'password'"
+                  v-model="confirmPassword"
+                  class="form-control"
+                  required
+                />
+                <div class="input-group-append">
+                  <span
+                    class="input-group-text"
+                    @click="togglePasswordVisibility('confirmPassword')"
+                  >
+                    <i :class="passwordVisibility ? 'fa fa-eye-slash' : 'fa fa-eye'"></i>
+                  </span>
+                </div>
+              </div>
             </div>
 
-            <button class="btn btn-primary mt-2">Stwórz konto</button>
+            <button class="btn btn-secondary mt-2 border-radius">Stwórz konto</button>
           </form>
         </div>
       </div>
@@ -53,6 +77,7 @@
 <script>
 import axios from 'axios';
 import swal from 'sweetalert';
+
 export default {
   data() {
     return {
@@ -62,19 +87,23 @@ export default {
       lastName: null,
       password: null,
       confirmPassword: null,
+      passwordVisibility: false,
     };
   },
   methods: {
     async signup(e) {
       e.preventDefault();
-      if (this.password === this.confirmPassword) {
+
+      const passwordRegex = /^(?=.*[A-Z])(?=.*[!@#$%^&*])(.{8,})$/;
+
+      if (this.password === this.confirmPassword && passwordRegex.test(this.password)) {
         const user = {
           email: this.email,
           firstName: this.firstName,
           lastName: this.lastName,
           password: this.password,
         };
-        console.log('user', user);
+
         await axios
           .post(`${this.baseURL}/user/signup`, user)
           .then(() => {
@@ -87,14 +116,24 @@ export default {
           .catch((err) => console.log('err', err));
       } else {
         swal({
-          text: 'hasła nie pasują do siebie',
+          text:
+            'Hasło nie spełnia wymagań: 8 znaków, jedna wielka litera, jeden znak specjalny',
           icon: 'error',
         });
+      }
+    },
+    togglePasswordVisibility(inputField) {
+      // Update the respective password visibility state based on the input field
+      if (inputField === 'password') {
+        this.passwordVisibility = !this.passwordVisibility;
+      } else if (inputField === 'confirmPassword') {
+        this.confirmPasswordVisibility = !this.confirmPasswordVisibility;
       }
     },
   },
 };
 </script>
+
 <style scoped>
 .logo-signup {
   width: 200px;
@@ -108,5 +147,8 @@ export default {
   #signup {
     width: 40%;
   }
+}
+.border-radius {
+  border-radius: 20px;
 }
 </style>

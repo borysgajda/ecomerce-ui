@@ -145,7 +145,6 @@ export default {
   },
   mounted() {
     this.token = localStorage.getItem('token');
-    console.log(this.categories);
   },
 };
 </script>

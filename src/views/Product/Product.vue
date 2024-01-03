@@ -5,7 +5,10 @@
       <div class="col-12 text-center">
         <h3 class="pt-3">Nasze produkty</h3>
         <router-link :to="{ name: 'AddProduct' }" style="float: right">
-          <button class="btn" v-show="$route.name == 'AdminProduct'">
+          <button
+            class="btn btn-secondary border-radius"
+            v-show="$route.name == 'AdminProduct'"
+          >
             Dodaj produkt
           </button>
         </router-link>
@@ -29,3 +32,8 @@ export default {
   props: ['products'],
 };
 </script>
+<style scoped>
+.border-radius {
+  border-radius: 20px;
+}
+</style>

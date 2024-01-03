@@ -123,7 +123,7 @@
             <div class="modal-content">
               <div class="modal-header">
                 <h5 class="modal-title" id="newsletterModalLabel">
-                  Subscribe to Newsletter
+                  Subskrybuj newsletter
                 </h5>
                 <button
                   type="button"
@@ -142,7 +142,7 @@
                       type="email"
                       class="form-control"
                       id="email"
-                      placeholder="Enter your email"
+                      placeholder="Podaj swój adres email"
                     />
                   </div>
                   <button type="submit" class="btn btn-secondary mb-0">Subscribe</button>

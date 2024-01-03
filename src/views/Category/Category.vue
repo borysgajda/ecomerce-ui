@@ -9,7 +9,9 @@
           :to="{ name: 'addCategory' }"
           v-show="$route.name == 'Category'"
         >
-          <button class="btn" style="float: right">Dodaj kategorie</button>
+          <button class="btn btn-secondary border-radius" style="float: right">
+            Dodaj kategorie
+          </button>
         </router-link>
       </div>
     </div>
@@ -48,5 +50,8 @@ h4 {
   font-family: 'Roboto', sans-serif;
   color: #484848;
   font-weight: 700;
+}
+.border-radius {
+  border-radius: 20px;
 }
 </style>

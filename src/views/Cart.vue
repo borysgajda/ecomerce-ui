@@ -42,8 +42,8 @@
           </span>
         </p>
         <br />
-        <a href="#" class="text-right" @click="deleteItem(cartItem.id)"
-          >Usuń z koszyka
+        <a class="text-right ml-3 mr-2" @click="deleteItem(cartItem.id)"
+          ><i class="bi bi-trash"></i>
         </a>
       </div>
       <div class="col-2"></div>
@@ -51,7 +51,7 @@
     </div>
     <div class="total-cost pt-2 text-right">
       <h5>Suma : {{ totalCost.toFixed(2) }} zł</h5>
-      <button type="button" class="btn btn-primary confirm" @click="checkout">
+      <button type="button" class="btn btn-dark confirm" @click="checkout">
         Potwierdź zamówienie
       </button>
     </div>
@@ -105,5 +105,12 @@ h4,
 h5 {
   color: #484848;
   font-size: 700;
+}
+.confirm {
+  border-radius: 20px;
+}
+.card-title ::v-deep a {
+  text-decoration: none !important;
+  color: #000 !important;
 }
 </style>

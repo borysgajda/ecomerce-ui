@@ -19,7 +19,7 @@
         :to="{ name: 'EditProduct', params: { id: product.id } }"
         v-show="$route.name == 'AdminProduct'"
       >
-        <button class="btn btn-primary">Edytuj</button>
+        <button class="btn btn-secondary border-radius">Edytuj</button>
       </router-link>
     </div>
   </div>
@@ -41,5 +41,8 @@ a {
 }
 .card-title {
   color: #484848;
+}
+.border-radius {
+  border-radius: 20px;
 }
 </style>
