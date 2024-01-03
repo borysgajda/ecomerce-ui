@@ -11,13 +11,13 @@
         <div class="swiper-button-prev"></div>
       </div>
     </div>
-    <div class="container py-5">
+    <div class="container">
       <hr />
     </div>
     <div class="container">
       <div class="row">
         <div class="col-12 text-center">
-          <h2 class="pt-3">Najlepsze kategorie</h2>
+          <h2>Najlepsze kategorie</h2>
         </div>
       </div>
       <div class="row">

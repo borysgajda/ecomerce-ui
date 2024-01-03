@@ -36,11 +36,11 @@ export default {
     this.category = this.categories.find((category) => category.id == this.id);
     this.product = this.products.filter((product) => product.categoryId == this.id);
     if (!this.product) {
-      this.msg = 'no products found';
+      this.msg = 'Nie znaleziono produktów w tej kategorii';
     } else if (this.product.length === 1) {
-      this.msg = 'Only 1 product found';
+      this.msg = 'Znaleziono tylko jeden produkt w tej kategorii';
     } else {
-      this.msg = this.product.length + ' products found';
+      this.msg = this.product.length + ' znalezionych produktów';
     }
   },
 };
