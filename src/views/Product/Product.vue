@@ -15,7 +15,7 @@
       <div
         v-for="product of products"
         :key="product.id"
-        class="col-md-6 col-xl-4 col-12 pt-3 d-flex"
+        class="col-md-6 col-xl-4 col-12 pt-3 d-flex mt-5"
       >
         <ProductBox :product="product" />
       </div>

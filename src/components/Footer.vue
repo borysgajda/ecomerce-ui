@@ -87,15 +87,69 @@
               </a>
             </li>
             <li>
-              <button class="btn btn-secondary mb-0">NEWSLETTER</button>
+              <button
+                class="btn btn-secondary mb-0"
+                data-toggle="modal"
+                data-target="#newsletterModal"
+              >
+                NEWSLETTER
+              </button>
             </li>
             <li>
               <a class="font-weight-light">
-                <i class="bi bi-facebook ml-2"></i><i class="bi bi-youtube ml-2"></i
-                ><i class="bi bi-instagram ml-2"> </i>
+                <a href="https://www.facebook.com" target="_blank" class="custom-link">
+                  <i class="bi bi-facebook ml-2"></i>
+                </a>
+                <a href="https://www.youtube.com" target="_blank" class="custom-link">
+                  <i class="bi bi-youtube ml-2"></i>
+                </a>
+                <a href="https://www.instagram.com" target="_blank" class="custom-link">
+                  <i class="bi bi-instagram ml-2"></i>
+                </a>
               </a>
             </li>
           </ul>
+        </div>
+        <!-- Bootstrap Modal -->
+        <div
+          class="modal fade"
+          id="newsletterModal"
+          tabindex="-1"
+          role="dialog"
+          aria-labelledby="newsletterModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="newsletterModalLabel">
+                  Subscribe to Newsletter
+                </h5>
+                <button
+                  type="button"
+                  class="close"
+                  data-dismiss="modal"
+                  aria-label="Close"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form>
+                  <div class="form-group">
+                    <label for="email">Email address:</label>
+                    <input
+                      type="email"
+                      class="form-control"
+                      id="email"
+                      placeholder="Enter your email"
+                    />
+                  </div>
+                  <button type="submit" class="btn btn-secondary mb-0">Subscribe</button>
+                </form>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -104,6 +158,7 @@
 
 <style>
 footer {
+  font-family: 'Plus Jakarta Sans', sans-serif;
   margin-top: 100px;
   background-color: #111111;
   font-size: 16px;
@@ -114,6 +169,10 @@ a {
 .footer-link {
   color: #ddd !important;
 }
+.footer-link a {
+  color: #7e7e7e !important;
+}
+
 li {
   padding-bottom: 10px;
 }
