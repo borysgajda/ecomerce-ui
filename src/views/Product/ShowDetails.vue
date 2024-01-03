@@ -13,7 +13,7 @@
           {{ product.description }}
         </p>
         <button
-          class="btn btn-outline-dark radius mr-3 p-1 py-0"
+          class="btn btn-outline-dark radius mr-3 mb-3 p-1 py-0"
           @click="addToWishlist()"
         >
           Ulubione <i class="bi bi-heart"></i>
