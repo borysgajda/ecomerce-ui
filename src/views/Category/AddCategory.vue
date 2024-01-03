@@ -22,7 +22,11 @@
             <label>Image URL</label>
             <input type="url" class="form-control" v-model="imageURL" required />
           </div>
-          <button type="button" class="btn btn-primary" @click="addCategory">
+          <button
+            type="button"
+            class="btn btn-secondary border-radius"
+            @click="addCategory"
+          >
             Wyślij
           </button>
         </form>
@@ -78,5 +82,8 @@ h4 {
   font-family: 'Roboto', sans-serif;
   color: #484848;
   font-weight: 700;
+}
+.border-radius {
+  border-radius: 20px;
 }
 </style>

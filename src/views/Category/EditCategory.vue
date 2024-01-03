@@ -36,7 +36,11 @@
               required
             />
           </div>
-          <button type="button" class="btn btn-primary" @click="editCategory">
+          <button
+            type="button"
+            class="btn btn-secondary border-radius"
+            @click="editCategory"
+          >
             Wyślij
           </button>
         </form>
@@ -80,3 +84,8 @@ export default {
   },
 };
 </script>
+<style scoped>
+.border-radius {
+  border-radius: 20px;
+}
+</style>

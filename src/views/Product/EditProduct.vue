@@ -42,7 +42,11 @@
             <label>Cena</label>
             <input type="number" class="form-control" v-model="product.price" required />
           </div>
-          <button type="button" class="btn btn-primary" @click="editProduct">
+          <button
+            type="button"
+            class="btn btn-secondary border-radius"
+            @click="editProduct"
+          >
             Wyślij
           </button>
         </form>
@@ -85,3 +89,8 @@ export default {
   },
 };
 </script>
+<style scoped>
+.border-radius {
+  border-radius: 20px;
+}
+</style>

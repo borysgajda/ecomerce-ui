@@ -18,7 +18,7 @@
         :to="{ name: 'EditCategory', params: { id: category.id } }"
         v-show="$route.name == 'Category'"
       >
-        <button class="btn btn-primary">Edytuj</button>
+        <button class="btn btn-secondary border-radius">Edytuj</button>
       </router-link>
     </div>
   </div>
@@ -56,5 +56,8 @@ a {
 }
 #edit-category {
   float: right;
+}
+.border-radius {
+  border-radius: 20px;
 }
 </style>

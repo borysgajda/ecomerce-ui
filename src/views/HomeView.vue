@@ -72,7 +72,7 @@ export default {
   },
   mounted() {
     this.categorySize = Math.min(6, this.categories.length);
-    this.productSize = Math.min(8, this.products.length);
+    this.productSize = Math.min(9, this.products.length);
     new Swiper('.swiper-container', {
       navigation: {
         nextEl: '.swiper-button-next',

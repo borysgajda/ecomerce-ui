@@ -12,6 +12,12 @@
         <p>
           {{ product.description }}
         </p>
+        <button
+          class="btn btn-outline-dark radius mr-3 p-1 py-0"
+          @click="addToWishlist()"
+        >
+          Ulubione <i class="bi bi-heart"></i>
+        </button>
         <div class="d-flex flex-row justify-content-between">
           <div class="input-group col-md-3 col-4 p-0">
             <div class="input-group-prepend">
@@ -21,7 +27,7 @@
           </div>
 
           <div class="input-group col-md-3 col-4 p-0">
-            <button class="btn" type="button" id="add-to-cart-button" @click="addToCart">
+            <button class="btn button-container" type="button" @click="addToCart">
               Dodaj do koszyka
             </button>
           </div>
@@ -36,9 +42,6 @@
             <li>ut doloremque dolore corrupti, architecto iusto beatae.</li>
           </ul>
         </div>
-        <button id="wishlist-button" class="btn mr-3 p-1 py-0" @click="addToWishlist()">
-          {{ wishListString }}
-        </button>
       </div>
     </div>
   </div>
@@ -126,10 +129,17 @@ export default {
 }
 
 #wishlist-button {
-  background-color: #b9b9b9;
+  background: none !important;
+  border-radius: 20px;
 }
 
-#add-to-cart-button {
-  background-color: #febd69;
+.button-container {
+  background-color: #343a40 !important;
+  color: #fff;
+  border-radius: 20px;
+}
+.radius {
+  border-radius: 30px;
+  padding: 10px !important;
 }
 </style>

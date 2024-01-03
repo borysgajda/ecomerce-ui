@@ -56,7 +56,9 @@
               required
             ></textarea>
           </div>
-          <button type="submit" class="btn btn-secondary">Wyślij wiadomość</button>
+          <button type="submit" class="btn btn-secondary border-radius">
+            Wyślij wiadomość
+          </button>
         </form>
       </div>
       <div class="col-md-6 col-12 pt-3 pt-md-0 right-column">
@@ -107,7 +109,6 @@ export default {
       product: {},
       category: {},
       quantity: 1,
-      wishListString: 'Dodaj do listy życzeń',
       senderEmail: '',
       emailMessage: '',
       emailName: '',
@@ -166,5 +167,8 @@ export default {
 }
 .right-column {
   border-left: 1px solid grey;
+}
+.border-radius {
+  border-radius: 20px;
 }
 </style>
