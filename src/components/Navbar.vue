@@ -104,7 +104,9 @@
     <div class="categories-wrapper">
       <ul class="categories-list">
         <li v-for="(category, index) in categories" :key="index" class="list-group-item">
-          {{ category.categoryName }}
+          <router-link :to="{ name: 'ListProducts', params: { id: category.id } }">
+            {{ category.categoryName }}
+          </router-link>
         </li>
       </ul>
     </div>
@@ -112,6 +114,7 @@
 </template>
 <script>
 import swal from 'sweetalert';
+
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
   name: 'Navbar',
@@ -131,6 +134,13 @@ export default {
       });
       this.$emit('resetCartCount');
       this.$router.push({ name: 'home' });
+    },
+  },
+  watch: {
+    $route(to, from) {
+      if (to.name === from.name && to.params.id !== from.params.id) {
+        this.$router.go();
+      }
     },
   },
   mounted() {
@@ -190,8 +200,14 @@ export default {
   background-color: #111111 !important;
   color: #fff;
   padding: 10px;
-  border-radius: 5px;
-  margin-right: 10px;
+  border-right: 1px solid #fff;
+}
+.list-group-item ::v-deep a {
+  text-decoration: none !important;
+  color: #fff !important;
+}
+.categories-list .list-group-item:last-child {
+  border-right: none;
 }
 .form-control {
   margin-left: 170px;

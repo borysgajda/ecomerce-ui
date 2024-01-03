@@ -9,7 +9,7 @@
 
     <div class="row">
       <div
-        v-for="product of category.products"
+        v-for="product of product"
         :key="product.id"
         class="col-md-6 col-xl-4 col-12 pt-3 justify-content-around d-flex"
       >
@@ -26,19 +26,21 @@ export default {
     return {
       id: null,
       category: {},
+      product: [],
       msg: '',
     };
   },
-  props: ['categories'],
+  props: ['products', 'categories'],
   mounted() {
     this.id = this.$route.params.id;
     this.category = this.categories.find((category) => category.id == this.id);
-    if (this.category.products.length == 0) {
+    this.product = this.products.filter((product) => product.categoryId == this.id);
+    if (!this.product) {
       this.msg = 'no products found';
-    } else if (this.category.products.length == 1) {
+    } else if (this.product.length === 1) {
       this.msg = 'Only 1 product found';
     } else {
-      this.msg = this.category.products.length + ' products found';
+      this.msg = this.product.length + ' products found';
     }
   },
 };

@@ -1,23 +1,17 @@
 <template>
   <div id="home">
     <div id="background-div" class="page-holder bg-cover">
-      <div class="container py-5">
-        <header class="text-left text-white py-5">
-          <h3 class="mb-4 rounded" id="heading">
-            <a href="#start-shopping" class="bg-white px-2 py-2 rounded">
-              Przeglądaj produkty</a
-            >
-          </h3>
-          <p class="lead mb-0 title-text p-1 rounded">
-            Stone Shop to miejsce, gdzie pasjonaci kamieni naturalnych, kolekcjonerzy,
-            projektanci wnętrz i osoby poszukujące unikalnych prezentów znajdą szeroki
-            wybór wysokiej jakości kamieni i produktów z nimi związanych. Fachowa obsługa
-            i bogate doświadczenie w dziedzinie kamieniarstwa sprawiają, że Stone Shop to
-            idealne miejsce dla wszystkich, którzy cenią piękno i energię kamieni
-            naturalnych.
-          </p>
-        </header>
+      <div class="swiper-container">
+        <div class="swiper-wrapper">
+          <div v-for="(image, index) in galleryImages" :key="index" class="swiper-slide">
+            <img :src="image" alt="Gallery Image" class="img-fluid" />
+          </div>
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
       </div>
+    </div>
+    <div class="container py-5">
       <hr />
     </div>
     <div class="container">
@@ -58,6 +52,12 @@
 <script>
 import CategoryBox from '../components/Category/CategoryBox';
 import ProductBox from '../components/Category/ProductBox.vue';
+import Swiper from 'swiper/bundle';
+import photo2 from '@/assets/photo2.jpg';
+import photo3 from '@/assets/photo3.jpg';
+import photo4 from '@/assets/photo4.gif';
+import photo6 from '@/assets/photo6.jpg';
+
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
   name: 'Home',
@@ -67,29 +67,65 @@ export default {
     return {
       categorySize: 0,
       productSize: 0,
+      galleryImages: [photo2, photo3, photo4, photo6],
     };
   },
   mounted() {
     this.categorySize = Math.min(6, this.categories.length);
     this.productSize = Math.min(8, this.products.length);
+    new Swiper('.swiper-container', {
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      autoplay: {
+        delay: 5000,
+        disableOnInteraction: false,
+      },
+      loop: true,
+    });
   },
 };
 </script>
+
 <style>
-.page-holder {
-  min-height: 100vh;
+.swiper-container {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 }
-.bg-cover {
-  background-size: cover !important;
+
+.swiper-slide {
+  max-height: 500px;
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-#background-div {
-  background: url('../assets/Stonners.png');
+
+.swiper-pagination {
+  display: none;
 }
-#heading {
-  font-weight: 400;
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: #fff;
+  font-size: 18px;
 }
-.title-text {
-  background-color: #f5f5f5;
-  color: black;
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  content: '›';
+  font-family: 'swiper-icons';
+}
+
+.swiper-button-prev::after {
+  content: '‹';
 }
 </style>
