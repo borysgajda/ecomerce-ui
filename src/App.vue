@@ -13,15 +13,17 @@
     @fetchData="fetchData"
   >
   </router-view>
+  <Description />
   <Footer />
 </template>
 
 <script>
 import Navbar from './components/Navbar.vue';
 import Footer from './components/Footer';
+import Description from './components/Description';
 import axios from 'axios';
 export default {
-  components: { Navbar, Footer },
+  components: { Navbar, Footer, Description },
   data() {
     return {
       baseURL: 'http://localhost:8080/',
@@ -70,5 +72,8 @@ export default {
 <style>
 html {
   overflow-y: scroll;
+}
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
 }
 </style>

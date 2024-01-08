@@ -16,7 +16,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <form class="form-inline ml-auto mr-auto">
+        <!-- <form class="form-inline ml-auto mr-auto">
           <div class="input-group">
             <input
               size="100"
@@ -43,7 +43,7 @@
               </span>
             </div>
           </div>
-        </form>
+        </form> -->
         <ul class="navbar-nav ml-auto">
           <li class="nav-item dropdown">
             <a

@@ -49,9 +49,9 @@
         <h4>Podobne produkty</h4>
       </div>
       <div
-        class="col-md-6 col-xl-4 col-12 pt-3 d-flex mt-5"
         v-for="product in this.randomProducts"
         :key="product.id"
+        class="col-md-4 col-xl-4 col-12 pt-3 d-flex mt-5"
       >
         <ProductBox :product="product" />
       </div>
