@@ -44,21 +44,37 @@
         </div>
       </div>
     </div>
+    <div class="row pt-5">
+      <div class="col-12">
+        <h4>Podobne produkty</h4>
+      </div>
+      <div
+        class="col-md-6 col-xl-4 col-12 pt-3 d-flex mt-5"
+        v-for="product in this.randomProducts"
+        :key="product.id"
+      >
+        <ProductBox :product="product" />
+      </div>
+    </div>
   </div>
 </template>
 <script>
 import swal from 'sweetalert';
 import axios from 'axios';
+import ProductBox from '../../components/Category/ProductBox.vue';
+
 export default {
   data() {
     return {
       baseURL: 'http://localhost:8080/',
       product: {},
       category: {},
+      randomProducts: [],
       quantity: 1,
       wishListString: 'Dodaj do listy życzeń',
     };
   },
+  components: { ProductBox },
   props: ['products', 'categories'],
   methods: {
     addToWishlist() {
@@ -120,6 +136,19 @@ export default {
       (category) => category.id == this.product.categoryId
     );
     this.token = localStorage.getItem('token');
+
+    const filteredProducts = this.products.filter(
+      (product) => product.categoryId == this.category.id && product.id != this.id
+    );
+
+    const randomIndexes = [];
+    while (randomIndexes.length < 3) {
+      const randomIndex = Math.floor(Math.random() * filteredProducts.length);
+      if (!randomIndexes.includes(randomIndex)) {
+        randomIndexes.push(randomIndex);
+      }
+    }
+    this.randomProducts = randomIndexes.map((index) => filteredProducts[index]);
   },
 };
 </script>
