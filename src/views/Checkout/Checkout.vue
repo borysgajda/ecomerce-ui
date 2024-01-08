@@ -1,12 +1,19 @@
 <template>
   <div class="div_class">
     <h3>Zostaniesz przekierowany na stronę płatności</h3>
-    <div class="alert alert-primary">
-      Dokonując płatności użyj numeru karty 4242 4242 4242 4242 i wpisz losową datę oraz
-      cvv (3 cyfry)
+    <div class="alert alert-secondary">
+      <p>
+        Za 5 sekund zostaniesz przekierowany na stronę płatności. Abym mógł zrealizować
+        zamówienie, musisz dokonać płatności.
+      </p>
+      <p class="mb-2">
+        Dokonując płatności użyj numeru karty 4242 4242 4242 4242 i wpisz losową datę oraz
+        cvv (3 cyfry).
+      </p>
+      <a>W momencie braku przekierowania proszę kliknąć przycisk poniżej.</a>
     </div>
 
-    <button class="btn btn-seconrady border-radius" @click="goToCheckout">
+    <button class="btn btn-secondary border-radius" @click="goToCheckout">
       Płatność
     </button>
   </div>
@@ -64,9 +71,13 @@ export default {
     this.token = localStorage.getItem('token');
     this.stripe = window.Stripe(this.stripeAPIToken);
     this.getAllItems();
+    setTimeout(() => {
+      this.goToCheckout();
+    }, 5000);
   },
 };
 </script>
+>
 <style scoped>
 .alert {
   width: 50%;

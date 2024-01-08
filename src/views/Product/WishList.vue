@@ -11,6 +11,9 @@
         :key="product.id"
         class="col-md-6 col-xl-4 col-12 pt-3 justify-content-around d-flex mt-5"
       >
+        <a class="text-right ml-3 mr-2" @click="deleteItem(product.categoryId)"
+          ><i class="bi bi-trash"></i>
+        </a>
         <ProductBox :product="product"> </ProductBox>
       </div>
     </div>
@@ -39,7 +42,19 @@ export default {
           console.log('err', err);
         });
     },
+    deleteItem(itemId) {
+      console.log('itemId', itemId);
+      axios
+        .delete(`${this.baseURL}wishlist/delete/${itemId}?token=${this.token}`)
+        .then((res) => {
+          if (res.status == 200) {
+            this.$router.go(0);
+          }
+        })
+        .catch((err) => console.log('err', err));
+    },
   },
+
   mounted() {
     this.token = localStorage.getItem('token');
     this.fetchWishList();

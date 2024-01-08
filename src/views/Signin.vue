@@ -74,11 +74,6 @@ export default {
 </script>
 
 <style scoped>
-.btn-primary {
-  background-color: #f0c14b;
-  color: black;
-}
-
 @media screen and (min-width: 992px) {
   #signin {
     width: 40%;

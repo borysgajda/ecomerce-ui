@@ -138,10 +138,6 @@ export default {
 .logo-signup {
   width: 200px;
 }
-.btn-primary {
-  background-color: #f0c14b;
-  color: #000;
-}
 
 @media screen and (min-width: 992px) {
   #signup {
