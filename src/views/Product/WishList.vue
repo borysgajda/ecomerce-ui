@@ -11,7 +11,7 @@
         :key="product.id"
         class="col-md-6 col-xl-4 col-12 pt-3 justify-content-around d-flex mt-5"
       >
-        <a class="text-right ml-3 mr-2" @click="deleteItem(product.categoryId)"
+        <a class="text-right mr-2" @click="deleteItem(product.id)"
           ><i class="bi bi-trash"></i>
         </a>
         <ProductBox :product="product"> </ProductBox>
@@ -43,7 +43,6 @@ export default {
         });
     },
     deleteItem(itemId) {
-      console.log('itemId', itemId);
       axios
         .delete(`${this.baseURL}wishlist/delete/${itemId}?token=${this.token}`)
         .then((res) => {
