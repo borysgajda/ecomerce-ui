@@ -142,10 +142,17 @@
                       type="email"
                       class="form-control"
                       id="email"
+                      v-model="newsletterEmail"
                       placeholder="Podaj swój adres email"
                     />
                   </div>
-                  <button type="submit" class="btn btn-secondary mb-0">Subscribe</button>
+                  <button
+                    type="button"
+                    class="btn btn-secondary mb-0"
+                    @click="subscribeNewsletter"
+                  >
+                    Subscribe
+                  </button>
                 </form>
               </div>
             </div>
@@ -155,6 +162,46 @@
     </div>
   </footer>
 </template>
+
+<script>
+import swal from 'sweetalert';
+import axios from 'axios';
+
+export default {
+  props: ['baseURL'],
+  data() {
+    return {
+      newsletterEmail: '',
+    };
+  },
+  methods: {
+    subscribeNewsletter() {
+      const email = this.newsletterEmail;
+      axios
+        .post(`${this.baseURL}subscribe-newsletter`, { email })
+        .then((res) => {
+          if (res.status === 200) {
+            this.subscriptionMessage = 'Twój e-mail już jest zapisany do newslettera.';
+          } else {
+            this.subscriptionMessage = 'Dziękujemy za subskrypcję naszego newslettera!';
+          }
+          swal({
+            text: this.subscriptionMessage,
+            icon: 'success',
+          });
+        })
+        .catch((err) => {
+          console.error('Błąd podczas subskrypcji newslettera:', err);
+          this.subscriptionMessage = 'Dziękujemy za subskrypcję naszego newslettera!';
+          swal({
+            text: this.subscriptionMessage,
+            icon: 'success',
+          });
+        });
+    },
+  },
+};
+</script>
 
 <style>
 footer {

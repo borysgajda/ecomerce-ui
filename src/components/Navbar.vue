@@ -16,18 +16,23 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <!-- <form class="form-inline ml-auto mr-auto">
+        <form class="form-inline ml-auto mr-auto" @submit.prevent="searchProducts">
           <div class="input-group">
             <input
               size="100"
               type="text"
               class="form-control"
+              v-model="searchQuery"
               placeholder="Szukaj"
               aria-label="Username"
               aria-describedby="basic-addon1"
             />
             <div class="input-group-prepend">
-              <span class="input-group-text" id="search-button-navbar">
+              <span
+                class="input-group-text"
+                id="search-button-navbar"
+                @click="performSearch"
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
@@ -43,7 +48,7 @@
               </span>
             </div>
           </div>
-        </form> -->
+        </form>
         <ul class="navbar-nav ml-auto">
           <li class="nav-item dropdown">
             <a
@@ -118,10 +123,12 @@ import swal from 'sweetalert';
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
   name: 'Navbar',
-  props: ['cartCount', 'categories'],
+  props: ['cartCount', 'categories', 'products'],
   data() {
     return {
       token: null,
+      searchQuery: '',
+      searchResults: [],
     };
   },
   methods: {
@@ -134,6 +141,12 @@ export default {
       });
       this.$emit('resetCartCount');
       this.$router.push({ name: 'home' });
+    },
+    performSearch() {
+      this.$router.push({
+        name: 'Product',
+        query: { prod: this.searchQuery.toLowerCase() },
+      });
     },
   },
   watch: {

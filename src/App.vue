@@ -2,6 +2,7 @@
   <Navbar
     :cartCount="cartCount"
     :categories="categories"
+    :products="products"
     @resetCartCount="resetCartCount"
   />
   <router-view
@@ -14,7 +15,7 @@
   >
   </router-view>
   <Description />
-  <Footer />
+  <Footer :baseURL="baseURL" />
 </template>
 
 <script>
