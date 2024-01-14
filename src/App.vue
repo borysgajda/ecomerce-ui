@@ -2,6 +2,7 @@
   <Navbar
     :cartCount="cartCount"
     :categories="categories"
+    :products="products"
     @resetCartCount="resetCartCount"
   />
   <router-view
