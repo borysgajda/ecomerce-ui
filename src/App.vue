@@ -15,7 +15,7 @@
   >
   </router-view>
   <Description />
-  <Footer />
+  <Footer :baseURL="baseURL" />
 </template>
 
 <script>

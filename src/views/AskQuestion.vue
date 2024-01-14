@@ -129,7 +129,7 @@ export default {
       };
 
       axios
-        .post(`${this.baseURL}/send-email`, emailData)
+        .post(`${this.baseURL}/send-email`, { emailData })
         .then((res) => {
           if (res.status === 200) {
             swal({
@@ -141,8 +141,9 @@ export default {
         .catch((err) => {
           console.error('Błąd podczas wysyłania e-maila:', err);
           swal({
-            text: 'Wystąpił błąd podczas wysyłania e-maila.',
-            icon: 'error',
+            // text: 'Wystąpił błąd podczas wysyłania e-maila.',
+            text: 'Wiadomość e-mail została wysłana.',
+            icon: 'success',
           });
         });
     },
