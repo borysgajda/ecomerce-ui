@@ -2,10 +2,12 @@
   <div class="container">
     <div class="row pt-5">
       <div class="col-md-6 col-12 pt-3 pt-md-0 right-column">
+        <!-- Main section -->
         <header class="font-weight-bold mb-2" style="font-size: larger">
           DANE FIRMY
         </header>
         <div class="mt-3 font-italic">
+          <!-- Company information -->
           <span>The Stone Shop Sp. z o.o.</span>
           <span>ul. Krótka 14, 35-103 Rzeszów</span>
           <span>NIP: 123-45-67-899</span>

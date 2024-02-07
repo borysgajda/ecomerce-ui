@@ -1,10 +1,13 @@
 <template>
+  <!-- Navbar component with props and event listener -->
   <Navbar
     :cartCount="cartCount"
     :categories="categories"
     :products="products"
     @resetCartCount="resetCartCount"
   />
+
+  <!-- Router view with conditional rendering and props -->
   <router-view
     v-if="categories && products"
     style="min-height: 60vh"
@@ -14,7 +17,11 @@
     @fetchData="fetchData"
   >
   </router-view>
+
+  <!-- Description component -->
   <Description />
+
+  <!-- Footer component with prop -->
   <Footer :baseURL="baseURL" />
 </template>
 
@@ -23,6 +30,7 @@ import Navbar from './components/Navbar.vue';
 import Footer from './components/Footer';
 import Description from './components/Description';
 import axios from 'axios';
+
 export default {
   components: { Navbar, Footer, Description },
   data() {
@@ -35,6 +43,7 @@ export default {
   },
   methods: {
     async fetchData() {
+      // Fetch categories data from API
       await axios
         .get(this.baseURL + 'category/')
         .then((res) => {
@@ -42,6 +51,7 @@ export default {
         })
         .catch((err) => console.log('err', err));
 
+      // Fetch products data from API
       await axios
         .get(this.baseURL + 'product/')
         .then((res) => {
@@ -49,6 +59,7 @@ export default {
         })
         .catch((err) => console.log('err', err));
 
+      // Fetch cart data if token is available
       if (this.token) {
         axios
           .get(`${this.baseURL}cart/?token=${this.token}`)
@@ -60,10 +71,12 @@ export default {
       }
     },
     resetCartCount() {
+      // Reset cart count
       this.cartCount = 0;
     },
   },
   mounted() {
+    // Get token from local storage and fetch data on component mount
     this.token = localStorage.getItem('token');
     this.fetchData();
   },

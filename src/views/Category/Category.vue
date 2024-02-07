@@ -4,6 +4,7 @@
     <div class="row">
       <div class="col-12 text-center">
         <h3 class="pt-3">Nasze kategorie</h3>
+        <!-- Link to addCategory route -->
         <router-link
           id="add-category"
           :to="{ name: 'addCategory' }"
@@ -16,6 +17,7 @@
       </div>
     </div>
     <div class="row">
+      <!-- Loop through categories and display CategoryBox component for each category -->
       <div
         v-for="category of categories"
         :key="category.id"

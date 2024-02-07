@@ -8,13 +8,17 @@
       />
     </div>
     <div class="card-body">
+      <!-- Link to show product details -->
       <router-link :to="{ name: 'ShowDetails', params: { id: product.id } }">
         <h5 class="card-title">{{ product.name }}</h5>
       </router-link>
 
+      <!-- Product description -->
       <p class="card-text">
         {{ product.description ? product.description.substring(0, 65) + '...' : '' }}
       </p>
+
+      <!-- Link to edit product (visible only on AdminProduct route) -->
       <router-link
         :to="{ name: 'EditProduct', params: { id: product.id } }"
         v-show="$route.name == 'AdminProduct'"

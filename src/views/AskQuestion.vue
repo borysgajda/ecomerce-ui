@@ -2,10 +2,12 @@
   <div class="container">
     <div class="row pt-5">
       <div class="col-md-6 col-12 pt-3 pt-md-0">
+        <!--  Contact form -->
         <header class="font-weight-bold mb-2" style="font-size: larger">
           Formularz kontaktowy
         </header>
         <form @submit.prevent="sendEmail">
+          <!-- Name and surname form -->
           <div class="form-group">
             <label for="message">Imię i nazwisko</label>
             <input
@@ -16,6 +18,7 @@
               required
             />
           </div>
+          <!-- Email form -->
           <div class="form-group">
             <label for="email">Twój e-mail</label>
             <input
@@ -26,6 +29,7 @@
               required
             />
           </div>
+          <!-- Adress -->
           <div class="form-group">
             <label for="message">Adres</label>
             <input
@@ -36,6 +40,7 @@
               required
             />
           </div>
+          <!-- Telefon -->
           <div class="form-group">
             <label for="message">Telefon</label>
             <input
@@ -46,6 +51,7 @@
               required
             />
           </div>
+          <!-- Your message -->
           <div class="form-group">
             <label for="message">Twoja wiadomość</label>
             <textarea
@@ -62,6 +68,7 @@
         </form>
       </div>
       <div class="col-md-6 col-12 pt-3 pt-md-0 right-column">
+        <!-- Oru shops -->
         <header class="font-weight-bold mb-2" style="font-size: larger">
           Nasze sklepy
         </header>

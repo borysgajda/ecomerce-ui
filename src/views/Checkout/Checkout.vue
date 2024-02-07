@@ -1,5 +1,6 @@
 <template>
   <div class="div_class">
+    <!-- Alert message -->
     <h3>Zostaniesz przekierowany na stronę płatności</h3>
     <div class="alert alert-secondary">
       <p>
@@ -13,6 +14,7 @@
       <a>W momencie braku przekierowania proszę kliknąć przycisk poniżej.</a>
     </div>
 
+    <!-- Payment button -->
     <button class="btn btn-secondary border-radius" @click="goToCheckout">
       Płatność
     </button>
@@ -35,6 +37,7 @@ export default {
   // eslint-disable-next-line vue/multi-word-component-names
   name: 'Checkout',
   methods: {
+    // Method to fetch cart items
     getAllItems() {
       axios
         .get(`${this.baseURL}cart/?token=${this.token}`)
@@ -53,6 +56,7 @@ export default {
         })
         .catch((err) => console.log(err));
     },
+    // Method to handle checkout process
     goToCheckout() {
       console.log('checkoutBodyArray', this.checkoutBodyArray);
       axios
@@ -77,7 +81,7 @@ export default {
   },
 };
 </script>
->
+
 <style scoped>
 .alert {
   width: 50%;

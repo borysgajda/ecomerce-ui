@@ -10,18 +10,22 @@
       <div class="col-3"></div>
       <div class="col-md-6 px-5 px-md-0">
         <form>
+          <!-- Input field for category name -->
           <div class="form-group">
             <label>Nazwa</label>
             <input type="text" class="form-control" v-model="categoryName" required />
           </div>
+          <!-- Input field for category description -->
           <div class="form-group">
             <label>Opis</label>
             <input type="text" class="form-control" v-model="description" required />
           </div>
+          <!-- Input field for category image URL -->
           <div class="form-group">
             <label>Image URL</label>
             <input type="url" class="form-control" v-model="imageURL" required />
           </div>
+          <!-- Button to add the category -->
           <button
             type="button"
             class="btn btn-secondary border-radius"
@@ -48,6 +52,7 @@ export default {
     };
   },
   methods: {
+    // Function to add a new category
     async addCategory() {
       const newCategory = {
         categoryName: this.categoryName,
@@ -55,6 +60,7 @@ export default {
         imageUrl: this.imageURL,
       };
       const baseURL = 'http://localhost:8080/';
+      // Send a POST request to create a new category
       await axios({
         method: 'post',
         url: baseURL + 'category/create',
@@ -64,6 +70,7 @@ export default {
         },
       })
         .then(() => {
+          // Show a success message using SweetAlert
           swal({
             text: 'Kategoria dodana',
             icon: 'success',

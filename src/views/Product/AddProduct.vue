@@ -9,9 +9,11 @@
       <div class="col-3"></div>
       <div class="col-6">
         <form>
+          <!-- Form for adding a new product -->
           <div class="form-group">
             <label>Kategoria</label>
             <select class="form-control" v-model="categoryId" required>
+              <!-- Dropdown for selecting the category of the product -->
               <option
                 v-for="category in categories"
                 :key="category.id"
@@ -22,7 +24,7 @@
             </select>
           </div>
           <div class="form-group">
-            <label>Nawza</label>
+            <label>Nazwa</label>
             <input type="text" v-model="name" class="form-control" />
           </div>
           <div class="form-group">
@@ -50,6 +52,7 @@
     </div>
   </div>
 </template>
+
 <script>
 import axios from 'axios';
 import swal from 'sweetalert';
@@ -67,6 +70,7 @@ export default {
   },
   methods: {
     addProduct() {
+      // Function for adding a new product
       const newProduct = {
         categoryId: this.categoryId,
         description: this.description,
@@ -91,6 +95,7 @@ export default {
   },
 };
 </script>
+
 <style scoped>
 .border-radius {
   border-radius: 20px;

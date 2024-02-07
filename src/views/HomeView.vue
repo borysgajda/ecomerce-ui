@@ -1,8 +1,10 @@
 <template>
   <div id="home">
+    <!-- Slider section -->
     <div id="background-div" class="page-holder bg-cover">
       <div class="swiper-container">
         <div class="swiper-wrapper">
+          <!-- Iterate over galleryImages array and display images -->
           <div v-for="(image, index) in galleryImages" :key="index" class="swiper-slide">
             <img :src="image" alt="Gallery Image" class="img-fluid" />
           </div>
@@ -11,6 +13,8 @@
         <div class="swiper-button-prev"></div>
       </div>
     </div>
+
+    <!-- Categories section -->
     <div class="container">
       <hr />
     </div>
@@ -21,6 +25,7 @@
         </div>
       </div>
       <div class="row">
+        <!-- Iterate over categories and display CategoryBox component -->
         <div
           v-for="index in this.categorySize"
           :key="index"
@@ -30,6 +35,8 @@
         </div>
       </div>
     </div>
+
+    <!-- Products section -->
     <div class="container py-2">
       <div class="row">
         <div class="col-12 text-center">
@@ -37,6 +44,7 @@
         </div>
       </div>
       <div class="row">
+        <!-- Iterate over products and display ProductBox component -->
         <div
           v-for="index in this.productSize"
           :key="index"
@@ -71,8 +79,11 @@ export default {
     };
   },
   mounted() {
+    // Set the size of categories and products based on their length
     this.categorySize = Math.min(6, this.categories.length);
     this.productSize = Math.min(9, this.products.length);
+
+    // Initialize Swiper slider
     new Swiper('.swiper-container', {
       navigation: {
         nextEl: '.swiper-button-next',
@@ -93,6 +104,7 @@ export default {
 </script>
 
 <style>
+/* Styles for the Swiper slider */
 .swiper-container {
   width: 100%;
   height: 100%;

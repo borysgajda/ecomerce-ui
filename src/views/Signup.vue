@@ -11,10 +11,12 @@
         <div id="signup" class="flex-item border">
           <h2 class="pt-4 pl-4">Stwórz konto</h2>
           <form @submit="signup" class="pt-4 pl-4 pr-4">
+            <!-- Email input -->
             <div class="form-group">
               <label for="Email">Email</label>
               <input type="email" v-model="email" class="form-control" required />
             </div>
+            <!-- First name and last name inputs -->
             <div class="form-row">
               <div class="col">
                 <div class="form-group">
@@ -29,6 +31,7 @@
                 </div>
               </div>
             </div>
+            <!-- Password input -->
             <div class="form-group">
               <label for="Password">Hasło</label>
               <div class="input-group">
@@ -48,6 +51,7 @@
                 </div>
               </div>
             </div>
+            <!-- Confirm password input -->
             <div class="form-group">
               <div class="input-group">
                 <input

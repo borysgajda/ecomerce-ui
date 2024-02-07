@@ -6,6 +6,7 @@
         <h3 class="pt-3">Twój koszyk</h3>
       </div>
     </div>
+    <!-- Loop through cart items -->
     <div
       v-for="cartItem in cartItems"
       :key="cartItem.id"
@@ -13,6 +14,7 @@
     >
       <div class="col-2"></div>
       <div class="col-md-3 embed-responsive embed-responsive-16by9">
+        <!-- Display product image -->
         <img
           :src="cartItem.product.imageURL"
           alt=""
@@ -22,6 +24,7 @@
       </div>
       <div class="col-md-5 px-3">
         <div class="card-block px-3">
+          <!-- Display product name with a link to its details -->
           <h6 class="card-title">
             <router-link
               :to="{ name: 'ShowDetails', params: { id: cartItem.product.id } }"
@@ -30,11 +33,14 @@
             </router-link>
           </h6>
 
+          <!-- Display product price per unit -->
           <p class="mb-0 font-weight-bold" id="item-price">
             {{ cartItem.product.price }} zł za sztukę
           </p>
+          <!-- Display item quantity -->
           <p class="mb-0" style="float: left">Ilość: {{ cartItem.quantity }}</p>
         </div>
+        <!-- Display total price for the item -->
         <p class="mb-0" style="float: right">
           Suma:
           <span class="font-weight-bold">
@@ -42,6 +48,7 @@
           </span>
         </p>
         <br />
+        <!-- Delete item button -->
         <a class="text-right ml-3 mr-2" @click="deleteItem(cartItem.id)"
           ><i class="bi bi-trash"></i>
         </a>
@@ -49,6 +56,7 @@
       <div class="col-2"></div>
       <div class="col-12"><hr /></div>
     </div>
+    <!-- Display total cost and checkout button -->
     <div class="total-cost pt-2 text-right">
       <h5>Suma : {{ totalCost.toFixed(2) }} zł</h5>
       <button type="button" class="btn btn-dark confirm" @click="checkout">
@@ -59,6 +67,7 @@
 </template>
 <script>
 import axios from 'axios';
+// Vue component representing the shopping cart page.
 export default {
   data() {
     return {
@@ -69,6 +78,7 @@ export default {
     };
   },
   methods: {
+    //Fetches the cart items from the server and updates the component's data.
     listCartItems() {
       axios
         .get(`${this.baseURL}cart/?token=${this.token}`)
@@ -79,6 +89,10 @@ export default {
         })
         .catch((err) => console.log('err', err));
     },
+    /**
+     * Deletes an item from the cart.
+     * @param {string} itemId - The ID of the item to be deleted.
+     */
     deleteItem(itemId) {
       axios
         .delete(`${this.baseURL}cart/delete/${itemId}/?token=${this.token}`)
@@ -89,7 +103,7 @@ export default {
         })
         .catch((err) => console.log('err', err));
     },
-
+    // Redirects the user to the checkout page.
     checkout() {
       this.$router.push({ name: 'Checkout' });
     },

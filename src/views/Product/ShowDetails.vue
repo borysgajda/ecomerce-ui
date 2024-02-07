@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <!-- Product details section -->
     <div class="row pt-5">
       <div class="col-md-1"></div>
       <div class="col-md-4 col-12">
@@ -32,18 +33,11 @@
             </button>
           </div>
         </div>
-        <div class="features pt-3">
-          <!-- <h5><strong>Cechy</strong></h5>
-          <ul>
-            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
-            <li>Officia quas, officiis eius magni error magnam voluptatem</li>
-            <li>nesciunt quod! Earum voluptatibus quaerat dolorem doloribus</li>
-            <li>molestias ipsum ab, ipsa consectetur laboriosam soluta et</li>
-            <li>ut doloremque dolore corrupti, architecto iusto beatae.</li>
-          </ul> -->
-        </div>
+        <div class="features pt-3"></div>
       </div>
     </div>
+
+    <!-- Similar products section -->
     <div class="row pt-5">
       <div class="col-12">
         <h4>Podobne produkty</h4>

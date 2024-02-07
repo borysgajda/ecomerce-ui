@@ -9,11 +9,13 @@
     </div>
 
     <div class="card-body">
+      <!-- Link to navigate to ListProducts component with category id as parameter -->
       <router-link :to="{ name: 'ListProducts', params: { id: category.id } }">
         <h5 class="card-title">{{ category.categoryName }}</h5>
       </router-link>
 
       <p class="card-text">{{ category.description }}</p>
+      <!-- Link to navigate to EditCategory component with category id as parameter, only visible when the current route is 'Category' -->
       <router-link
         :to="{ name: 'EditCategory', params: { id: category.id } }"
         v-show="$route.name == 'Category'"

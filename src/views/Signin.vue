@@ -47,6 +47,7 @@ export default {
     };
   },
   methods: {
+    // Metoda wywoływana po zatwierdzeniu formularza logowania
     async signin(e) {
       e.preventDefault();
       const body = {
@@ -66,6 +67,7 @@ export default {
         })
         .catch((err) => console.log('err', err));
     },
+    // Metoda do przełączania widoczności hasła
     togglePasswordVisibility() {
       this.passwordVisibility = !this.passwordVisibility;
     },

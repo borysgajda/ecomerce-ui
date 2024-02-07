@@ -3,8 +3,10 @@
   <div class="container">
     <div class="row pt-5">
       <div class="col-md-12 col-12 pt-3 pt-md-0 right-column">
+        <!-- Header section -->
         <header class="font-weight-bold mb-2" style="font-size: larger">PŁATNOŚĆ</header>
         <div class="mt-3 font-italic">
+          <!-- Section I -->
           <span>I. Przy odbiorze w salonie</span>
           <p>
             Zapłata kartą lub gotówką przy odbiorze osobistym w jednym z poniższych
@@ -28,6 +30,7 @@
             </li>
           </ul>
 
+          <!-- Section II -->
           <span>II. Przedpłata - Przelew na konto przed realizacją zamówienia</span>
           <p>
             Wpłaty należy dokonać na nr konta podany w e-mailu wysłanym przez nas po
@@ -38,6 +41,7 @@
             poinformowany za pośrednictwem poczty elektronicznej.
           </p>
 
+          <!-- Section III -->
           <span>III. Płatność elektroniczna - System Przelewy24</span>
           <p>
             System szybkich płatności realizowany jest za pośrednictwem systemu

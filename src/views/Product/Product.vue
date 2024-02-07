@@ -4,6 +4,7 @@
     <div class="row">
       <div class="col-12 text-center">
         <h3 class="pt-3">Nasze produkty</h3>
+        <!-- Link to AddProduct component -->
         <router-link
           :to="{ name: 'AddProduct', query: { prod: $route.query.prod } }"
           style="float: right"
@@ -18,6 +19,7 @@
       </div>
     </div>
     <div class="row">
+      <!-- Loop through products and render ProductBox component -->
       <div
         v-for="product in localProd"
         :key="product.id"
@@ -41,6 +43,7 @@ export default {
     };
   },
   watch: {
+    // Watch for changes in the route query parameter 'prod'
     $route(to, from) {
       if (to.query.prod !== from.query.prod) {
         this.filterProducts();
@@ -48,9 +51,11 @@ export default {
     },
   },
   mounted() {
+    // Call filterProducts method on component mount
     this.filterProducts();
   },
   methods: {
+    // Filter products based on the route query parameter 'prod'
     filterProducts() {
       const queryProd = this.$route.query.prod
         ? this.$route.query.prod.toLowerCase()

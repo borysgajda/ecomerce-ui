@@ -1,9 +1,12 @@
 <template>
   <div>
+    <!-- Navbar -->
     <nav class="navbar-wrapper navbar navbar-expand-lg navbar-dark">
+      <!-- Logo -->
       <router-link class="navbar-brand" :to="{ name: 'home' }">
         <img id="logo" src="../assets/logos.png" />
       </router-link>
+      <!-- Toggler button for mobile -->
       <button
         class="navbar-toggler"
         type="button"
@@ -15,7 +18,9 @@
       >
         <span class="navbar-toggler-icon"></span>
       </button>
+      <!-- Navbar content -->
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <!-- Search form -->
         <form class="form-inline ml-auto mr-auto" @submit.prevent="searchProducts">
           <div class="input-group">
             <input
@@ -49,7 +54,9 @@
             </div>
           </div>
         </form>
+        <!-- Dropdown menu -->
         <ul class="navbar-nav ml-auto">
+          <!-- Search dropdown -->
           <li class="nav-item dropdown">
             <a
               class="nav-link text-light dropdown-toggle"
@@ -71,6 +78,7 @@
               </router-link>
             </div>
           </li>
+          <!-- Account dropdown -->
           <li class="nav-item dropdown">
             <a
               class="nav-link mr-4 dropdown-toggle text-light"
@@ -95,6 +103,7 @@
               </a>
             </div>
           </li>
+          <!-- Cart -->
           <li class="nav-item">
             <div id="cart" style="position: relative" class="mr-3">
               <router-link class="text-light" :to="{ name: 'Cart' }">
@@ -106,6 +115,7 @@
         </ul>
       </div>
     </nav>
+    <!-- Categories -->
     <div class="categories-wrapper">
       <ul class="categories-list">
         <li v-for="(category, index) in categories" :key="index" class="list-group-item">
@@ -121,9 +131,12 @@
 import swal from 'sweetalert';
 
 export default {
+  // Component name
   // eslint-disable-next-line vue/multi-word-component-names
   name: 'Navbar',
+  // Props
   props: ['cartCount', 'categories', 'products'],
+  // Data
   data() {
     return {
       token: null,
@@ -131,7 +144,9 @@ export default {
       searchResults: [],
     };
   },
+  // Methods
   methods: {
+    // Sign out user
     signout() {
       localStorage.removeItem('token');
       this.token = null;
@@ -142,6 +157,7 @@ export default {
       this.$emit('resetCartCount');
       this.$router.push({ name: 'home' });
     },
+    // Perform search
     performSearch() {
       this.$router.push({
         name: 'Product',
@@ -149,6 +165,7 @@ export default {
       });
     },
   },
+  // Watchers
   watch: {
     $route(to, from) {
       if (to.name === from.name && to.params.id !== from.params.id) {
@@ -156,26 +173,31 @@ export default {
       }
     },
   },
+  // Mounted hook
   mounted() {
     this.token = localStorage.getItem('token');
   },
 };
 </script>
 <style scoped>
+/* Logo */
 #logo {
   width: 150px;
   margin-left: 20px;
   margin-right: 20px;
 }
+/* Navbar link */
 .nav-link {
   color: rgba(255, 255, 255);
 }
+/* Search button */
 #search-button-navbar {
   background-color: #febd69;
   border-color: #febd69;
   border-top-right-radius: 2px;
   border-bottom-right-radius: 2px;
 }
+/* Cart count */
 #nav-cart-count {
   background-color: red;
   color: white;
@@ -189,9 +211,11 @@ export default {
   position: absolute;
   margin-left: 10px;
 }
+/* Navbar wrapper */
 .navbar-wrapper {
   background-color: #111111;
 }
+/* Categories wrapper */
 .categories-wrapper {
   display: flex;
   align-items: center;
@@ -199,14 +223,14 @@ export default {
   background-color: #111111;
   padding-bottom: 5px;
 }
-
+/* Categories list */
 .categories-list {
   list-style: none;
   display: flex;
   margin: 0;
   padding: 0;
 }
-
+/* List group item */
 .list-group-item {
   display: inline-block;
   background-color: #111111 !important;
@@ -214,13 +238,16 @@ export default {
   padding: 10px;
   border-right: 1px solid #fff;
 }
+/* List group item link */
 .list-group-item ::v-deep a {
   text-decoration: none !important;
   color: #fff !important;
 }
+/* Last child of categories list */
 .categories-list .list-group-item:last-child {
   border-right: none;
 }
+/* Form control */
 .form-control {
   margin-left: 170px;
 }

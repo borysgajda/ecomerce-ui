@@ -1,9 +1,13 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
+  <!-- Container for the about section -->
   <div class="container">
     <div class="row pt-5">
+      <!-- Column for the right side content -->
       <div class="col-md-12 col-12 pt-3 pt-md-0 right-column">
+        <!-- Header for the about section -->
         <header class="font-weight-bold mb-2" style="font-size: larger">O NAS</header>
+        <!-- Paragraph describing the company -->
         <div class="mt-3 font-italic">
           Firma The Stone Shop to jeden z wiodących polskich importerów i dystrybutorów
           kamienia naturalnego. Zajmujemy się handlem kamieniem od ponad ćwierćwiecza,
@@ -21,6 +25,7 @@
         </div>
         <div class="mt-3"></div>
 
+        <!-- Contact information -->
         <div>
           <ul style="list-style-type: none" class="pl-0 mt-3">
             <li>
@@ -44,6 +49,7 @@
     </div>
   </div>
 </template>
+
 <script>
 export default {
   data() {
@@ -55,6 +61,7 @@ export default {
   methods: {},
 };
 </script>
+
 <style>
 .category {
   font-weight: 400;
@@ -67,10 +74,12 @@ export default {
 #add-to-cart-button {
   background-color: #febd69;
 }
+
 .custom-link {
   color: inherit !important;
   text-decoration: none;
 }
+
 .right-column {
   border-left: 1px solid grey;
 }
