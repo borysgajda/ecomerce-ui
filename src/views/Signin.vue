@@ -25,7 +25,7 @@
                 </div>
               </div>
             </div>
-            <button class="btn btn-secondary mt-2 py-0 border-radius">Kontynuuj</button>
+            <button class="btn btn-secondary mt-2 mb-2 border-radius">Kontynuuj</button>
           </form>
         </div>
       </div>

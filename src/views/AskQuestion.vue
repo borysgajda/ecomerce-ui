@@ -3,11 +3,11 @@
     <div class="row pt-5">
       <div class="col-md-6 col-12 pt-3 pt-md-0">
         <header class="font-weight-bold mb-2" style="font-size: larger">
-          Formularz Kontaktowy
+          Formularz kontaktowy
         </header>
         <form @submit.prevent="sendEmail">
           <div class="form-group">
-            <label for="message">Imię</label>
+            <label for="message">Imię i nazwisko</label>
             <input
               class="form-control"
               id="message"
@@ -27,7 +27,7 @@
             />
           </div>
           <div class="form-group">
-            <label for="message">Kod pocztowy</label>
+            <label for="message">Adres</label>
             <input
               class="form-control"
               id="message"

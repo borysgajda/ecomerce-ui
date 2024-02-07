@@ -67,7 +67,9 @@
               </div>
             </div>
 
-            <button class="btn btn-secondary mt-2 border-radius">Stwórz konto</button>
+            <button class="btn btn-secondary mt-2 mb-2 border-radius">
+              Stwórz konto
+            </button>
           </form>
         </div>
       </div>
